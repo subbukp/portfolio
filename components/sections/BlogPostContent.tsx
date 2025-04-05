@@ -30,7 +30,7 @@ const blogPosts: BlogPosts = {
     title: "How I Set Up GitOps with ArgoCD in 10 Steps",
     date: "2024-04-01",
     readingTime: "15 min read",
-    author: "Your Name",
+    author: "Subrahmanya K P",
     tags: ["GitOps", "ArgoCD", "Kubernetes", "DevOps"],
     content: `
 # How I Set Up GitOps with ArgoCD in 10 Steps
@@ -168,7 +168,7 @@ Happy GitOps-ing! 🚀
     title: "Securing CI/CD Pipelines: A DevOps Checklist",
     date: "2024-03-25",
     readingTime: "12 min read",
-    author: "Your Name",
+    author: "Subrahmanya K P",
     tags: ["Security", "CI/CD", "DevOps", "Best Practices"],
     content: "Content for CI/CD security blog post..."
   },
@@ -176,7 +176,7 @@ Happy GitOps-ing! 🚀
     title: "Zero Downtime Deployments with Kubernetes",
     date: "2024-03-18",
     readingTime: "18 min read",
-    author: "Your Name",
+    author: "Subrahmanya K P",
     tags: ["Kubernetes", "DevOps", "Deployment", "SRE"],
     content: "Content for zero downtime deployments blog post..."
   }
