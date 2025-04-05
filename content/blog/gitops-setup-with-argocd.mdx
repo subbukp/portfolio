@@ -1,0 +1,184 @@
+---
+title: "How I Set Up GitOps with ArgoCD in 10 Steps"
+date: "2024-04-01"
+excerpt: "A practical guide to implementing GitOps using ArgoCD, from initial setup to advanced deployment strategies. Learn how to automate your Kubernetes deployments and maintain infrastructure as code."
+author: "Your Name"
+tags: ["GitOps", "ArgoCD", "Kubernetes", "DevOps"]
+---
+
+# How I Set Up GitOps with ArgoCD in 10 Steps
+
+GitOps is revolutionizing the way we handle deployments and infrastructure management. In this guide, I'll walk you through setting up a production-grade GitOps workflow using ArgoCD.
+
+## Prerequisites
+
+Before we begin, ensure you have:
+- A Kubernetes cluster (I'm using EKS)
+- kubectl configured
+- helm installed
+- A GitHub repository for your manifests
+
+## Step 1: Install ArgoCD
+
+First, let's create a dedicated namespace and install ArgoCD:
+
+```bash
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+
+## Step 2: Access the ArgoCD UI
+
+Expose the ArgoCD API server:
+
+```bash
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+```
+
+Get the initial admin password:
+
+```bash
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+```
+
+## Step 3: Configure Your Git Repository
+
+In the ArgoCD UI:
+1. Go to Settings → Repositories
+2. Click "Connect Repo"
+3. Add your Git repository details
+4. Use SSH or HTTPS authentication
+
+## Step 4: Create Your First Application
+
+Here's a sample Application manifest:
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/yourusername/your-repo.git
+    targetRevision: HEAD
+    path: k8s/manifests
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: my-app
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+```
+
+## Step 5: Implement Auto-Sync
+
+Enable auto-sync in your Application:
+- Set `automated.prune: true` for automatic cleanup
+- Enable `selfHeal: true` to correct drift
+
+## Step 6: Set Up Notifications
+
+Configure notifications for sync status:
+
+```yaml
+apiVersion: notifications.argoproj.io/v1alpha1
+kind: NotificationConfig
+metadata:
+  name: my-notifications
+spec:
+  triggers:
+    - name: on-sync-succeeded
+      condition: app.status.sync.status == 'Succeeded'
+      template: sync-succeeded
+```
+
+## Step 7: Implement Health Checks
+
+Add custom health checks to your application:
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+spec:
+  # ... other configs ...
+  ignoreDifferences:
+  - group: apps
+    kind: Deployment
+    jsonPointers:
+    - /spec/replicas
+```
+
+## Step 8: Set Up Multiple Environments
+
+Create environment-specific overlays:
+```
+manifests/
+├── base/
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   └── kustomization.yaml
+└── overlays/
+    ├── dev/
+    │   └── kustomization.yaml
+    └── prod/
+        └── kustomization.yaml
+```
+
+## Step 9: Implement Progressive Delivery
+
+Use Argo Rollouts for advanced deployment strategies:
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: my-app
+spec:
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {duration: 1h}
+      - setWeight: 40
+      - pause: {duration: 1h}
+      - setWeight: 60
+      - pause: {duration: 1h}
+      - setWeight: 80
+      - pause: {duration: 1h}
+```
+
+## Step 10: Monitor and Maintain
+
+Best practices for ongoing maintenance:
+1. Regularly update ArgoCD version
+2. Monitor sync status and errors
+3. Implement proper RBAC
+4. Back up ArgoCD configurations
+5. Set up proper logging and monitoring
+
+## Conclusion
+
+With these steps, you've set up a robust GitOps workflow using ArgoCD. This approach provides:
+- Automated deployments
+- Version control for your infrastructure
+- Drift detection and correction
+- Audit trail for all changes
+
+Remember to:
+- Keep your manifests DRY
+- Use proper branching strategies
+- Implement proper access controls
+- Regularly review and update your configurations
+
+## Resources
+
+- [ArgoCD Documentation](https://argo-cd.readthedocs.io/)
+- [GitOps Best Practices](https://www.gitops.tech/)
+- [Kubernetes Documentation](https://kubernetes.io/docs/) 
