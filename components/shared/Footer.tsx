@@ -33,7 +33,7 @@ const Footer = () => {
             Made with ❤️ using Next.js and TypeScript
           </p>
           <p className="text-gray-400 text-sm mt-2">
-            © {currentYear} Your Name. All rights reserved.
+            © {currentYear} Subrahmanya K P. All rights reserved.
           </p>
         </div>
       </div>
