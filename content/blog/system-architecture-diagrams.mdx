@@ -1,0 +1,267 @@
+---
+title: "System Architecture Diagrams: A Visual Guide to Modern Infrastructure"
+date: "2024-03-29"
+excerpt: "A comprehensive visual guide to modern system architectures, including microservices, CI/CD pipelines, and infrastructure blueprints using Mermaid diagrams."
+author: "Your Name"
+tags: ["Architecture", "DevOps", "Infrastructure", "CI/CD", "Cloud"]
+---
+
+# System Architecture Diagrams: A Visual Guide to Modern Infrastructure
+
+Visual documentation is crucial for understanding complex systems. In this post, I'll share various architecture diagrams that illustrate modern infrastructure patterns and workflows.
+
+## Microservices Architecture
+
+```mermaid
+graph TD
+    subgraph Frontend
+        A[Web App] --> B[API Gateway]
+        M[Mobile App] --> B
+    end
+    
+    subgraph Backend Services
+        B --> C[Auth Service]
+        B --> D[User Service]
+        B --> E[Product Service]
+        
+        C --> F[(Auth DB)]
+        D --> G[(User DB)]
+        E --> H[(Product DB)]
+    end
+    
+    subgraph Async Processing
+        D --> I[Message Queue]
+        I --> J[Analytics Service]
+        J --> K[(Analytics DB)]
+    end
+    
+    subgraph Monitoring
+        L[Prometheus] --> B & C & D & E
+        L --> N[Grafana]
+    end
+```
+
+## CI/CD Pipeline Flow
+
+```mermaid
+graph LR
+    subgraph Development
+        A[Git Push] --> B[GitHub Actions]
+        B --> C[Unit Tests]
+        B --> D[Lint Checks]
+        B --> E[Security Scan]
+    end
+    
+    subgraph Build
+        C & D & E --> F[Build Image]
+        F --> G[Push to Registry]
+    end
+    
+    subgraph Testing
+        G --> H[Deploy to Staging]
+        H --> I[Integration Tests]
+        H --> J[E2E Tests]
+        H --> K[Performance Tests]
+    end
+    
+    subgraph Production
+        I & J & K --> L[Deploy to Prod]
+        L --> M[Health Checks]
+        L --> N[Monitoring]
+        L --> O[Alerts]
+    end
+```
+
+## Cloud Infrastructure Blueprint
+
+```mermaid
+graph TB
+    subgraph VPC
+        subgraph Public Subnet
+            A[Load Balancer]
+            B[Bastion Host]
+        end
+        
+        subgraph Private Subnet 1
+            C[EKS Node Group 1]
+            D[RDS Primary]
+        end
+        
+        subgraph Private Subnet 2
+            E[EKS Node Group 2]
+            F[RDS Standby]
+        end
+        
+        A --> C & E
+        D <--> F
+    end
+    
+    subgraph External Services
+        G[Route53]
+        H[CloudWatch]
+        I[S3 Bucket]
+    end
+    
+    G --> A
+    C & E --> H
+    C & E --> I
+```
+
+## Kubernetes Architecture
+
+```mermaid
+graph TB
+    subgraph Control Plane
+        A[API Server] --> B[etcd]
+        C[Controller Manager] --> A
+        D[Scheduler] --> A
+    end
+    
+    subgraph Worker Node 1
+        E[Kubelet] --> A
+        F[Container Runtime]
+        G[Pods]
+    end
+    
+    subgraph Worker Node 2
+        H[Kubelet] --> A
+        I[Container Runtime]
+        J[Pods]
+    end
+    
+    subgraph Networking
+        K[Service Mesh]
+        L[Ingress Controller]
+        M[Network Policies]
+    end
+```
+
+## Observability Stack
+
+```mermaid
+graph TD
+    subgraph Data Collection
+        A[Application Logs] --> D[Fluentd]
+        B[System Metrics] --> E[Prometheus]
+        C[Traces] --> F[Jaeger]
+    end
+    
+    subgraph Storage
+        D --> G[Elasticsearch]
+        E --> H[Time Series DB]
+        F --> I[Trace Storage]
+    end
+    
+    subgraph Visualization
+        G --> J[Kibana]
+        H --> K[Grafana]
+        I --> L[Jaeger UI]
+    end
+    
+    subgraph Alerting
+        K --> M[Alert Manager]
+        M --> N[PagerDuty]
+        M --> O[Slack]
+    end
+```
+
+## Disaster Recovery Setup
+
+```mermaid
+graph LR
+    subgraph Primary Region
+        A[Active Services] --> B[Primary DB]
+        C[Backup Service] --> D[S3 Backup]
+    end
+    
+    subgraph DR Region
+        E[Standby Services] --> F[Replica DB]
+        B --> F
+        D --> G[S3 Replica]
+    end
+    
+    subgraph Global
+        H[Route 53] --> A
+        H -.-> E
+        I[Health Checks] --> H
+    end
+```
+
+## GitOps Workflow
+
+```mermaid
+graph LR
+    subgraph Source Control
+        A[Git Repository] --> B[ArgoCD]
+    end
+    
+    subgraph Kubernetes
+        B --> C[Cluster 1]
+        B --> D[Cluster 2]
+        B --> E[Cluster N]
+    end
+    
+    subgraph Monitoring
+        C & D & E --> F[Prometheus]
+        F --> G[Grafana]
+        F --> H[Alerts]
+    end
+```
+
+## Security Architecture
+
+```mermaid
+graph TB
+    subgraph External
+        A[Users] --> B[WAF]
+        B --> C[Load Balancer]
+    end
+    
+    subgraph Security Controls
+        C --> D[Identity Provider]
+        D --> E[API Gateway]
+        E --> F[Services]
+    end
+    
+    subgraph Monitoring
+        G[Security Scanner]
+        H[SIEM]
+        I[Audit Logs]
+    end
+    
+    F --> G & H & I
+```
+
+## Best Practices for Architecture Diagrams
+
+1. **Clarity First**
+   - Use consistent shapes and colors
+   - Group related components
+   - Include clear labels and descriptions
+
+2. **Level of Detail**
+   - Match detail to audience
+   - Layer diagrams (L1, L2, L3)
+   - Include relevant metadata
+
+3. **Maintenance**
+   - Version control diagrams
+   - Update with system changes
+   - Document assumptions
+
+## Tools and Resources
+
+1. **Diagram Tools**
+   - [Mermaid](https://mermaid-js.github.io/)
+   - [Draw.io](https://draw.io)
+   - [Excalidraw](https://excalidraw.com)
+
+2. **Architecture Patterns**
+   - [Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns/)
+   - [AWS Architecture Center](https://aws.amazon.com/architecture/)
+   - [Google Cloud Architecture Center](https://cloud.google.com/architecture)
+
+3. **Standards**
+   - [C4 Model](https://c4model.com/)
+   - [ArchiMate](https://www.opengroup.org/archimate-forum)
+   - [UML](https://www.uml.org/) 
