@@ -116,13 +116,13 @@ const Contact = () => {
             <div className="space-y-4">
               <p className="flex items-center text-gray-600">
                 <span className="text-xl mr-4">📧</span>
-                <a href="mailto:your.email@example.com" className="hover:text-blue-600">
-                  your.email@example.com
+                <a href="mailto:kps.18.1999@gmail.com" className="hover:text-blue-600">
+                  kps.18.1999@gmail.com
                 </a>
               </p>
               <p className="flex items-center text-gray-600">
                 <span className="text-xl mr-4">📍</span>
-                Your Location
+                Bengaluru, India
               </p>
             </div>
 
