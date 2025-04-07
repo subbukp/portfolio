@@ -32,9 +32,9 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    { name: 'GitHub', url: 'https://github.com/yourusername', icon: '📦' },
-    { name: 'LinkedIn', url: 'https://linkedin.com/in/yourusername', icon: '💼' },
-    { name: 'Twitter', url: 'https://twitter.com/yourusername', icon: '🐦' },
+    { name: 'GitHub', url: 'https://github.com/subbukp', icon: '📦' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/subrahmanya-k-p-964733184/', icon: '💼' },
+    { name: 'Twitter', url: 'https://x.com/subrahmanya11', icon: '🐦' },
   ];
 
   return (

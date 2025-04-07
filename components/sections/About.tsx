@@ -41,17 +41,22 @@ const principles = [
 const socialLinks = [
   {
     platform: "GitHub",
-    url: "https://github.com/yourusername",
+    url: "https://github.com/subbukp",
     className: "hover:text-gray-900 dark:hover:text-gray-100"
   },
   {
     platform: "LinkedIn",
-    url: "https://linkedin.com/in/yourusername",
+    url: "https://www.linkedin.com/in/subrahmanya-k-p-964733184/",
     className: "hover:text-blue-600 dark:hover:text-blue-400"
   },
   {
+    platform: "X(FormerlyTwitter)",
+    url: "https://x.com/subrahmanya11",
+    className: "hover:text-purple-600 dark:hover:text-purple-400"
+  },
+  {
     platform: "Dev.to",
-    url: "https://dev.to/yourusername",
+    url: "https://dev.to/subbukp",
     className: "hover:text-purple-600 dark:hover:text-purple-400"
   }
 ];
