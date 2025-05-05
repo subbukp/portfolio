@@ -14,8 +14,9 @@ const Navbar = () => {
 
   const navItems = [
     { label: 'About', href: isHome ? '#about' : '/#about' },
-    { label: 'Projects', href: isHome ? '#projects' : '/#projects' },
     { label: 'Skills', href: isHome ? '#skills' : '/#skills' },
+    { label: 'Resume', href: isHome ? '#resume' : '/#resume' },
+    { label: 'Projects', href: isHome ? '#projects' : '/#projects' },
     { label: 'Blog', href: '/blog' },
     { label: 'Contact', href: isHome ? '#contact' : '/#contact' },
   ];
@@ -24,8 +25,9 @@ const Navbar = () => {
     <nav className="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          <Link href="/" className="text-2xl font-bold text-gray-900 dark:text-white">
-            Subrahmanya K P
+          <Link href="/" className="font-bold text-gray-900 dark:text-white">
+            <span className="hidden sm:inline text-2xl">Subrahmanya K P</span>
+            <span className="sm:hidden text-xl">Subrahmanya</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -73,13 +75,13 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden">
+          <div className="md:hidden absolute left-0 right-0 bg-white dark:bg-gray-900 shadow-lg z-50">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors ${
+                  className={`block px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors ${
                     pathname === item.href ? 'font-semibold' : ''
                   }`}
                   onClick={() => setIsMenuOpen(false)}

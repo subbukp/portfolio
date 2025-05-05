@@ -34,7 +34,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+    <section className="min-h-screen pt-24 md:pt-16 flex items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-full h-full">
@@ -71,30 +71,30 @@ export default function Hero() {
           animate="visible"
         >
           <motion.div variants={itemVariants}>
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
-              Site Reliability Engineer
-              <span className="block text-blue-600 dark:text-blue-400">
-                DevOps Specialist & Security Enthusiast
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
+              Subrahmanya K P
+              <span className="block text-blue-600 dark:text-blue-400 text-2xl sm:text-3xl md:text-4xl mt-2">
+                Site Reliability Engineer
               </span>
             </h1>
           </motion.div>
 
           <motion.p
             variants={itemVariants}
-            className="text-xl text-gray-600 dark:text-gray-300 max-w-lg"
+            className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-lg"
           >
-            Building resilient systems, automating at scale, securing the stack.
+            Designing reliable infrastructure, automating operations, and ensuring system resilience with a focus on observability and performance at Qure.ai.
           </motion.p>
 
           <motion.div
             variants={itemVariants}
             className="flex flex-wrap gap-4 items-center"
           >
-            <Button href="#projects" className="flex items-center gap-2">
+            <Button href="#projects" className="flex items-center gap-2 w-full sm:w-auto">
               <Terminal className="w-5 h-5" />
               Explore My Work
             </Button>
-            <Button href="#contact" variant="outline" className="flex items-center gap-2">
+            <Button href="#contact" variant="outline" className="flex items-center gap-2 w-full sm:w-auto">
               <Cloud className="w-5 h-5" />
               Let's Talk Infrastructure
             </Button>
@@ -105,9 +105,10 @@ export default function Hero() {
             className="flex gap-8 pt-8 border-t border-gray-200 dark:border-gray-700"
           >
             {[
-              { icon: Cloud, label: "Cloud Native" },
-              { icon: Cog, label: "Automation" },
-              { icon: Shield, label: "Security" },
+              { icon: Cloud, label: "AWS & Azure" },
+              { icon: Cog, label: "CI/CD Pipelines" },
+              { icon: Shield, label: "Kubernetes" },
+              { icon: Terminal, label: "Infrastructure as Code" },
             ].map((item, index) => (
               <motion.div
                 key={index}

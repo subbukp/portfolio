@@ -11,48 +11,66 @@ import {
   CommandLineIcon
 } from '@heroicons/react/24/outline';
 
-const projects = [
+interface ProjectLink {
+  github: string;
+  demo?: string;
+  blog?: string;
+  docs?: string;
+}
+
+interface Project {
+  icon: any;
+  name: string;
+  stack: string[];
+  problem: string;
+  actions: string[];
+  outcomes: string[];
+  links: ProjectLink;
+}
+
+const projects: Project[] = [
   {
     icon: CloudArrowUpIcon,
-    name: "GitOps-Driven Cloud Infrastructure",
-    stack: ["AWS", "ArgoCD", "Terraform", "Kubernetes", "GitHub Actions"],
-    problem: "Needed a scalable, self-healing infrastructure with automated deployments and drift detection",
+    name: "IFF Digital Twin",
+    stack: ["Kubernetes", "Docker", "Helm", "Jenkins", "Git", "AWS", "Sonarqube"],
+    problem: "Need to create a scalable, maintainable digital twin platform for Intel with automated CI/CD pipeline.",
     actions: [
-      "Implemented GitOps workflow using ArgoCD for Kubernetes deployments",
-      "Created modular Terraform codebase with remote state management",
-      "Set up multi-stage CI/CD pipelines with security scanning",
-      "Automated infrastructure validation and compliance checks"
+      "Built continuous integration & continuous deployment pipeline using Jenkins",
+      "Wrote Docker files for application deployment",
+      "Managed source code repository using Git",
+      "Implemented POD management in Kubernetes Cluster",
+      "Integrated code quality tools like Sonarqube",
+      "Integrated security analysis tools like OWASP Dependency check"
     ],
     outcomes: [
-      "Reduced deployment time by 70%",
-      "Infrastructure drift detected and corrected automatically",
-      "100% audit compliance achieved"
+      "Reduced deployment time by 65%",
+      "Improved code quality scores by 30%",
+      "Enhanced security compliance through automated scanning"
     ],
     links: {
-      github: "https://github.com/yourusername/gitops-infrastructure",
-      demo: "https://demo.yoursite.com",
-      blog: "https://dev.to/yourusername/gitops-journey"
+      github: "https://github.com/subbukp"
     }
   },
   {
     icon: ShieldCheckIcon,
-    name: "Zero-Trust Kubernetes Platform",
-    stack: ["GCP", "Kubernetes", "Vault", "Istio", "Terraform"],
-    problem: "Required highly secure, zero-trust Kubernetes environment for financial services",
+    name: "Intelligent Traffic Management",
+    stack: ["Kubernetes", "Docker", "Terraform", "AWS", "Jenkins", "Maven"],
+    problem: "Needed to provision and deploy a traffic management system with infrastructure as code principles.",
     actions: [
-      "Designed network policies and service mesh with Istio",
-      "Implemented secret management with HashiCorp Vault",
-      "Set up pod security policies and OPA/Gatekeeper",
-      "Created automated security compliance reporting"
+      "Used Maven for building the projects",
+      "Integrated tools like Sonarqube and OWASP Dependency Check",
+      "Added Linux VM as an agent for running pipelines",
+      "Provisioned AWS VMs using Terraform",
+      "Built CI/CD pipeline using Jenkins",
+      "Implemented GitLab webhooks for automating Jenkins jobs"
     ],
     outcomes: [
-      "Achieved SOC2 compliance certification",
-      "Zero security incidents in 6 months",
-      "Reduced secret rotation time by 90%"
+      "Infrastructure provisioning time reduced by 80%",
+      "Zero security incidents through continuous security scanning",
+      "Improved development team productivity with automated workflows"
     ],
     links: {
-      github: "https://github.com/yourusername/secure-k8s",
-      blog: "https://medium.com/@yourusername/zero-trust-k8s"
+      github: "https://github.com/subbukp"
     }
   },
   {
@@ -72,9 +90,7 @@ const projects = [
       "99.99% monitoring system uptime"
     ],
     links: {
-      github: "https://github.com/yourusername/observability-stack",
-      demo: "https://grafana.yoursite.com",
-      blog: "https://dev.to/yourusername/observability"
+      github: "https://github.com/subbukp"
     }
   },
   {
@@ -94,8 +110,7 @@ const projects = [
       "Zero production incidents from IaC changes"
     ],
     links: {
-      github: "https://github.com/yourusername/terraform-pipeline",
-      blog: "https://medium.com/@yourusername/iac-pipeline"
+      github: "https://github.com/subbukp"
     }
   },
   {
@@ -168,15 +183,15 @@ export default function Projects() {
               >
                 <div className="p-6 space-y-4">
                   {/* Project Header */}
-                  <div className="flex items-center gap-3">
-                    <project.icon className="w-8 h-8 text-blue-600 dark:text-blue-400" />
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+                  <div className="flex items-center gap-3 mb-3">
+                    <project.icon className="w-8 h-8 text-blue-600 dark:text-blue-400 flex-shrink-0" />
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 break-words">
                       📁 {project.name}
                     </h3>
                   </div>
 
                   {/* Tech Stack */}
-                  <div>
+                  <div className="mb-4">
                     <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                       🔧 Stack
                     </h4>
@@ -184,7 +199,7 @@ export default function Projects() {
                       {project.stack.map((tech, techIdx) => (
                         <span
                           key={techIdx}
-                          className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-sm"
+                          className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-sm mb-1"
                         >
                           {tech}
                         </span>
