@@ -61,115 +61,94 @@ const socialLinks = [
   }
 ];
 
-export default function About() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1
-    }
-  };
-
+const About = () => {
   return (
-    <section id="about" className="py-20 bg-white dark:bg-gray-900">
+    <section id="about" className="py-20 bg-white dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="space-y-12"
-        >
-          {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-              About Me
-            </h2>
-            <div className="mt-4 h-1 w-20 bg-blue-600 mx-auto rounded-full"></div>
-          </motion.div>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">About Me</h2>
+          <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+        </div>
 
-          {/* Experience Description */}
-          <motion.div 
-            variants={itemVariants}
-            className="prose prose-lg dark:prose-invert mx-auto"
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="prose dark:prose-invert max-w-none"
           >
-            <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
-              With extensive experience in Site Reliability Engineering and DevOps practices, 
-              I specialize in building and maintaining highly available, scalable, and secure 
-              infrastructure. My expertise spans across cloud platforms, containerization, 
-              automation, and implementing robust security measures.
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">DevOps Engineer & SRE Professional</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              A highly skilled result-oriented professional with 3+ years of experience in IT industry as a DevOps Engineer with hands-on
+              experience in designing and implementing automated deployment pipelines and configuration management systems.
             </p>
-          </motion.div>
-
-          {/* Core Principles Grid */}
-          <motion.div 
-            variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"
-          >
-            {principles.map((principle, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="p-6 rounded-xl bg-gray-50 dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow"
-              >
-                <principle.icon className="w-8 h-8 text-blue-600 dark:text-blue-400 mb-4" />
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                  {principle.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {principle.description}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Tech Stack Highlights */}
-          <motion.div 
-            variants={itemVariants}
-            className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 mt-12"
-          >
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-              Technical Proficiencies
-            </h3>
-            <div className="space-y-2 text-gray-600 dark:text-gray-300">
-              <p>🔹 <strong>Cloud Platforms:</strong> AWS, GCP, Azure</p>
-              <p>🔹 <strong>Container Orchestration:</strong> Kubernetes, Docker Swarm</p>
-              <p>🔹 <strong>CI/CD:</strong> Jenkins, GitLab CI, GitHub Actions</p>
-              <p>🔹 <strong>Infrastructure as Code:</strong> Terraform, CloudFormation, Ansible</p>
-              <p>🔹 <strong>Monitoring & Observability:</strong> Prometheus, Grafana, ELK Stack</p>
-              <p>🔹 <strong>Security Tools:</strong> HashiCorp Vault, SonarQube, OWASP Tools</p>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              Currently working as a Site Reliability Engineer at Qure.ai, previously at Rashtriya Chemical and Fertilizers (PSU) and Tata Consultancy Services, 
+              where I collaborated with development teams to implement agile methodology and performance tuning procedures.
+            </p>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              My work has resulted in a 30% reduction in security incidents and a 25% improvement in system performance.
+              I'm proficient in monitoring and alerting systems, reducing mean time to resolution (MTTR) by 40% and improving 
+              system uptime by 25%.
+            </p>
+            <div className="flex flex-wrap gap-3 mt-6">
+              <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium mb-2">
+                DevOps
+              </span>
+              <span className="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm font-medium mb-2">
+                Kubernetes
+              </span>
+              <span className="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full text-sm font-medium mb-2">
+                Docker
+              </span>
+              <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm font-medium mb-2">
+                AWS & Azure
+              </span>
+              <span className="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full text-sm font-medium mb-2">
+                CI/CD
+              </span>
+              <span className="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-sm font-medium mb-2">
+                Terraform
+              </span>
             </div>
           </motion.div>
 
-          {/* Social Links */}
-          <motion.div 
-            variants={itemVariants}
-            className="flex justify-center space-x-6 mt-8"
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 gap-6"
           >
-            {socialLinks.map((link, index) => (
-              <Link
-                key={index}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`text-gray-600 dark:text-gray-400 ${link.className} transition-colors duration-200`}
-              >
-                {link.platform}
-              </Link>
-            ))}
+            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <CloudArrowUpIcon className="w-10 h-10 text-blue-600 dark:text-blue-400 mb-4" />
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Cloud Infrastructure</h3>
+              <p className="text-gray-600 dark:text-gray-400">Expert in AWS and Azure cloud platforms for robust, scalable services.</p>
+            </div>
+
+            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <CodeBracketIcon className="w-10 h-10 text-blue-600 dark:text-blue-400 mb-4" />
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">CI/CD Pipelines</h3>
+              <p className="text-gray-600 dark:text-gray-400">Building automated pipelines with Jenkins, Azure DevOps, and AWS DevOps.</p>
+            </div>
+
+            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <CommandLineIcon className="w-10 h-10 text-blue-600 dark:text-blue-400 mb-4" />
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Infrastructure as Code</h3>
+              <p className="text-gray-600 dark:text-gray-400">Implementing IaC with Terraform and Ansible for consistent environments.</p>
+            </div>
+
+            <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <ShieldCheckIcon className="w-10 h-10 text-blue-600 dark:text-blue-400 mb-4" />
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Security Best Practices</h3>
+              <p className="text-gray-600 dark:text-gray-400">Integrating security tools like OWASP to ensure secure applications.</p>
+            </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
-}
+};
+
+export default About;
