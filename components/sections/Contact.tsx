@@ -19,12 +19,22 @@ const Contact = () => {
     setSubmitStatus('idle');
 
     try {
-      // Here you would typically send the form data to your backend
-      // For now, we'll just simulate a successful submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
+      console.error('Error sending message:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -94,6 +104,19 @@ const Contact = () => {
               <Button type="submit" disabled={isSubmitting}>
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
+              
+              {/* Alternative: Direct mailto link */}
+              <div className="mt-4 text-center">
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                  Or send directly via email:
+                </p>
+                <a
+                  href={`mailto:kps.18.1999@gmail.com?subject=Portfolio Contact from ${formData.name}&body=Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`}
+                  className="text-blue-600 dark:text-blue-400 hover:underline text-sm"
+                >
+                  Open in Email Client
+                </a>
+              </div>
 
               {submitStatus === 'success' && (
                 <p className="text-green-600">Message sent successfully!</p>
@@ -116,8 +139,8 @@ const Contact = () => {
             <div className="space-y-4">
               <p className="flex items-center text-gray-600 dark:text-gray-400">
                 <span className="text-xl mr-4">📧</span>
-                <a href="mailto:subrahmanya.kp@outlook.com" className="hover:text-blue-600 dark:hover:text-blue-400">
-                  subrahmanya.kp@outlook.com
+                <a href="mailto:kps.18.1999@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400">
+                  kps.18.1999@gmail.com
                 </a>
               </p>
               <p className="flex items-center text-gray-600 dark:text-gray-400">
