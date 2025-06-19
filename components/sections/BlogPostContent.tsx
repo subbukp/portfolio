@@ -3,22 +3,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { CalendarIcon, ClockIcon, ArrowLeftIcon, BookOpenIcon } from '@heroicons/react/24/outline';
+import { CalendarIcon, ClockIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import remarkGfm from 'remark-gfm';
-import rehypePrism from 'rehype-prism-plus';
 import MDXComponents from '@/components/MDXComponents';
 import { BlogPost } from '@/types/blog';
 import { getRelatedPosts, getPostsBySeries } from '@/lib/blog';
-import 'prismjs/themes/prism-tomorrow.css';
-import 'prismjs/components/prism-bash';
-import 'prismjs/components/prism-yaml';
-import 'prismjs/components/prism-json';
-import 'prismjs/components/prism-python';
-import 'prismjs/components/prism-sql';
-import 'prismjs/components/prism-typescript';
-import 'prismjs/components/prism-javascript';
 
 interface BlogPostContentProps {
   post: BlogPost;
@@ -34,10 +25,7 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
     const prepareMDX = async () => {
       const serialized = await serialize(post.content, {
         mdxOptions: {
-          remarkPlugins: [remarkGfm] as any[],
-          rehypePlugins: [
-            [rehypePrism, { ignoreMissing: true }]
-          ] as any[],
+          remarkPlugins: [remarkGfm],
         },
       });
       setMdxSource(serialized);

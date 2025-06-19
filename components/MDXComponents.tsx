@@ -75,16 +75,29 @@ const MDXComponents = {
   },
   
   // Code blocks
-  pre: ({ children }: { children: ReactNode }) => (
-    <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4">
+  pre: ({ children, ...props }: { children: ReactNode } & any) => (
+    <pre className="bg-gray-900 dark:bg-gray-950 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4 text-sm font-mono" {...props}>
       {children}
     </pre>
   ),
-  code: ({ children }: { children: ReactNode }) => (
-    <code className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-1 py-0.5 rounded text-sm">
-      {children}
-    </code>
-  ),
+  code: ({ children, className }: { children: ReactNode; className?: string }) => {
+    // Check if it's a code block (has language class) or inline code
+    const isCodeBlock = className?.startsWith('language-');
+    
+    if (isCodeBlock) {
+      return (
+        <code className={`${className} block font-mono`}>
+          {children}
+        </code>
+      );
+    }
+    
+    return (
+      <code className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-1 py-0.5 rounded text-sm font-mono">
+        {children}
+      </code>
+    );
+  },
   
   // Blockquotes
   blockquote: ({ children }: { children: ReactNode }) => (
