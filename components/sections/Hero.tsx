@@ -122,24 +122,26 @@ export default function Hero() {
 
           <motion.div
             variants={itemVariants}
-            className="flex gap-8 pt-8 border-t border-gray-200 dark:border-gray-700"
+            className="pt-8 border-t border-gray-200 dark:border-gray-700"
           >
-            {[
-              { icon: Cloud, label: "AWS & Azure" },
-              { icon: Cog, label: "CI/CD Pipelines" },
-              { icon: Shield, label: "Kubernetes" },
-              { icon: Terminal, label: "Infrastructure as Code" },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                className="flex flex-col items-center gap-2"
-                variants={iconVariants}
-                whileHover="hover"
-              >
-                <item.icon className="w-8 h-8 text-blue-600 dark:text-blue-400" />
-                <span className="text-sm text-gray-600 dark:text-gray-400">{item.label}</span>
-              </motion.div>
-            ))}
+            <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Core Expertise</h3>
+            <div className="flex flex-wrap gap-2">
+              {[
+                "Cloud Platforms (AWS/Azure)",
+                "Kubernetes & Docker",
+                "CI/CD Automation",
+                "Infrastructure as Code",
+                "DevOps Tools",
+                "Monitoring & Observability"
+              ].map((skill, index) => (
+                <span
+                  key={index}
+                  className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
           </motion.div>
         </motion.div>
 
