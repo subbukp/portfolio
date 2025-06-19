@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Button from '@/components/shared/Button';
 import { CommandLineIcon as Terminal, CloudIcon as Cloud, ShieldCheckIcon as Shield, CogIcon as Cog } from '@heroicons/react/24/outline';
@@ -98,6 +99,25 @@ export default function Hero() {
               <Cloud className="w-5 h-5" />
               Let's Talk Infrastructure
             </Button>
+          </motion.div>
+
+          {/* Creative 404 Easter Egg */}
+          <motion.div
+            variants={itemVariants}
+            className="mt-6"
+          >
+            <p className="text-xs text-gray-500 dark:text-gray-600">
+              <span className="mr-1">🔍</span>
+              Psst... Looking for something that doesn't exist? I built a{' '}
+              <Link 
+                href="/this-page-totally-does-not-exist-404" 
+                className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 underline decoration-dotted underline-offset-2 transition-all hover:decoration-wavy"
+              >
+                404 page
+              </Link>{' '}
+              that's cooler than most production deployments
+              <span className="inline-block ml-1 animate-pulse">✨</span>
+            </p>
           </motion.div>
 
           <motion.div

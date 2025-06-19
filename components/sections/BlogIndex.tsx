@@ -1,32 +1,25 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CalendarIcon, ClockIcon, ArrowRightIcon, MagnifyingGlassIcon, BookOpenIcon } from '@heroicons/react/24/outline';
-import { getAllPosts, getAllTags, getAllSeries } from '@/lib/blog';
 import { BlogPost } from '@/types/blog';
+
+// Import the blog data directly for client-side use
+import { blogPosts as staticBlogPosts } from '@/data/blog-posts';
 
 export default function BlogIndex() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTag, setSelectedTag] = useState('');
   const [selectedSeries, setSelectedSeries] = useState('');
   const [showSeriesView, setShowSeriesView] = useState(false);
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [allTags, setAllTags] = useState<string[]>([]);
-  const [allSeries, setAllSeries] = useState<string[]>([]);
   
-  useEffect(() => {
-    // Load blog data
-    const posts = getAllPosts();
-    const tags = getAllTags();
-    const series = getAllSeries();
-    
-    setBlogPosts(posts);
-    setAllTags(tags);
-    setAllSeries(series);
-  }, []);
+  // Use static data instead of fetching from API
+  const blogPosts = staticBlogPosts;
+  const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags))).sort();
+  const allSeries = Array.from(new Set(blogPosts.filter(post => post.series).map(post => post.series!))).sort();
   
   // Filter posts based on search, tag, and series
   const filteredPosts = blogPosts.filter(post => {
