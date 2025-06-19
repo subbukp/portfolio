@@ -35,7 +35,7 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
       const serialized = await serialize(post.content, {
         mdxOptions: {
           remarkPlugins: [remarkGfm],
-          rehypePlugins: [[rehypePrism, { ignoreMissing: true }]],
+          rehypePlugins: [[rehypePrism as any, { ignoreMissing: true }]],
         },
       });
       setMdxSource(serialized);
