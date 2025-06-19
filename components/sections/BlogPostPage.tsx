@@ -5,81 +5,18 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { CalendarIcon, ClockIcon, ArrowLeftIcon, BookOpenIcon } from '@heroicons/react/24/outline';
 import { MDXRemote } from 'next-mdx-remote';
-import { serialize } from 'next-mdx-remote/serialize';
-import remarkGfm from 'remark-gfm';
-import rehypePrism from 'rehype-prism-plus';
 import MDXComponents from '@/components/MDXComponents';
 import { BlogPost } from '@/types/blog';
-import { getRelatedPosts, getPostsBySeries } from '@/lib/blog';
 import 'prismjs/themes/prism-tomorrow.css';
-import 'prismjs/components/prism-bash';
-import 'prismjs/components/prism-yaml';
-import 'prismjs/components/prism-json';
-import 'prismjs/components/prism-python';
-import 'prismjs/components/prism-sql';
-import 'prismjs/components/prism-typescript';
-import 'prismjs/components/prism-javascript';
 
-interface BlogPostContentProps {
+interface BlogPostPageProps {
   post: BlogPost;
+  mdxSource: any;
+  relatedPosts: BlogPost[];
+  seriesNavigation: any;
 }
 
-export default function BlogPostContent({ post }: BlogPostContentProps) {
-  const [mdxSource, setMdxSource] = React.useState<any>(null);
-  const [relatedPosts, setRelatedPosts] = React.useState<BlogPost[]>([]);
-  const [seriesNavigation, setSeriesNavigation] = React.useState<any>(null);
-
-  React.useEffect(() => {
-    // Serialize MDX content
-    const prepareMDX = async () => {
-      const serialized = await serialize(post.content, {
-        mdxOptions: {
-          remarkPlugins: [remarkGfm],
-          rehypePlugins: [rehypePrism],
-        },
-      });
-      setMdxSource(serialized);
-    };
-    
-    prepareMDX();
-    
-    // Get related posts
-    const related = getRelatedPosts(post.slug);
-    setRelatedPosts(related);
-    
-    // Setup series navigation if applicable
-    if (post.series) {
-      const seriesPosts = getPostsBySeries(post.series);
-      const currentIndex = seriesPosts.findIndex(p => p.slug === post.slug);
-      
-      setSeriesNavigation({
-        series: post.series,
-        totalParts: seriesPosts.length,
-        currentPart: post.seriesOrder,
-        previousPost: currentIndex > 0 ? seriesPosts[currentIndex - 1] : null,
-        nextPost: currentIndex < seriesPosts.length - 1 ? seriesPosts[currentIndex + 1] : null,
-      });
-    }
-  }, [post]);
-
-  if (!mdxSource) {
-    return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-300 dark:bg-gray-700 rounded w-3/4 mb-4"></div>
-            <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/2 mb-8"></div>
-            <div className="space-y-3">
-              <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded"></div>
-              <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded"></div>
-              <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
+export default function BlogPostPage({ post, mdxSource, relatedPosts, seriesNavigation }: BlogPostPageProps) {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-20">
       <motion.article
@@ -117,10 +54,10 @@ export default function BlogPostContent({ post }: BlogPostContentProps) {
           </div>
           
           {/* Series indicator */}
-          {post.series && (
+          {post.series && seriesNavigation && (
             <div className="mt-3 flex items-center">
               <span className="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 rounded-full text-sm font-medium">
-                {post.series} - Part {post.seriesOrder} of {seriesNavigation?.totalParts}
+                {post.series} - Part {post.seriesOrder} of {seriesNavigation.totalParts}
               </span>
             </div>
           )}
