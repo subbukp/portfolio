@@ -134,6 +134,18 @@ export const blogPosts: BlogPost[] = [
     content: ""
   },
   {
+    title: "Understanding MCP: The Model Context Protocol Architecture",
+    slug: "understanding-mcp-architecture",
+    excerpt: "Deep dive into Anthropic's Model Context Protocol (MCP) - a revolutionary standard for connecting AI assistants to data sources. Learn about its architecture, components, and how it's changing AI integrations.",
+    date: "2024-03-20",
+    readingTime: "15 min read",
+    author: "Subrahmanya K P",
+    tags: ["AI", "MCP", "Architecture", "LLM", "Integration", "DevOps"],
+    coverImage: "/blog/mcp-architecture.png",
+    featured: true,
+    content: ""
+  },
+  {
     title: "We Moved Our Data Lake to Snowflake: The Good, Bad and Ugly Truth",
     slug: "snowflake-migration-lessons",
     excerpt: "After 3 months migrating our 20TB data lake to Snowflake, we learned painful lessons about performance, cost optimization, and architectural pitfalls. This detailed analysis covers what worked, what didn't, and what we'd do differently next time.",
