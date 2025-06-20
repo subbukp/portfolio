@@ -18,6 +18,11 @@ import {
 const Skills = () => {
   const skillCategories = [
     {
+      name: 'Languages & Frameworks',
+      skills: ['Python', 'Django', 'C#', '.NET', 'C++', "Next.js"],
+      icon: <CodeBracketIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
+    },
+    {
       name: 'CI/CD & Deployment',
       skills: ['Jenkins', 'Azure DevOps', 'AWS DevOps', 'Maven', 'GitLab CI', 'GitHub Actions'],
       icon: <ArrowPathIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
@@ -29,22 +34,22 @@ const Skills = () => {
     },
     {
       name: 'Infrastructure as Code',
-      skills: ['Terraform', 'Ansible', 'CloudFormation', 'ARM Templates', 'Pulumi'],
+      skills: ['Terraform', 'Ansible', 'CloudFormation'],
       icon: <CogIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
     },
     {
       name: 'Cloud Platforms',
-      skills: ['AWS', 'Azure', 'EC2/VPC', 'S3/RDS', 'Lambda', 'Azure Functions'],
+      skills: ['AWS', 'Azure', 'EC2/VPC', 'S3/RDS', 'Lambda'],
       icon: <CloudIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
     },
     {
       name: 'DevOps Tools',
-      skills: ['Git', 'SonarQube', 'JIRA', 'Docker Registry/ECR', 'OWASP', 'Nexus'],
+      skills: ['Git', 'GitLFS', 'JIRA', 'Docker Registry/ECR'],
       icon: <WrenchScrewdriverIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
     },
     {
       name: 'Monitoring & Observability',
-      skills: ['Prometheus', 'Grafana', 'ELK Stack', 'CloudWatch', 'Azure Monitor', 'New Relic'],
+      skills: ['Prometheus', 'Grafana', 'CloudWatch'],
       icon: <ShieldCheckIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
     },
     {
@@ -54,14 +59,10 @@ const Skills = () => {
     },
     {
       name: 'Databases & Storage',
-      skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'S3', 'Azure Blob Storage'],
+      skills: ['PostgreSQL', 'MySQL', 'Redis', 'S3', 'VectorDB'],
       icon: <CircleStackIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
     },
-    {
-      name: 'Security & Compliance',
-      skills: ['SAST/DAST', 'Vault', 'IAM', 'SSL/TLS', 'Security Scanning', 'Compliance Tools'],
-      icon: <ShieldCheckIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
-    },
+    
   ];
 
   return (
