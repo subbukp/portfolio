@@ -114,6 +114,36 @@ const Skills = () => {
           viewport={{ once: true }}
           className="mt-16 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
         >
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">Currently Learning</h3>
+          <div className="flex flex-wrap gap-3 justify-center mb-8">
+            <span className="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">
+              RAG (Retrieval-Augmented Generation)
+            </span>
+            <span className="px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium">
+              Vector Databases (Pinecone, Qdrant)
+            </span>
+            <span className="px-4 py-2 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-full text-sm font-medium">
+              LangChain & LlamaIndex
+            </span>
+            <span className="px-4 py-2 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full text-sm font-medium">
+              Embedding Models & Fine-tuning
+            </span>
+            <span className="px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-full text-sm font-medium">
+              Semantic Search & Similarity
+            </span>
+            <span className="px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-full text-sm font-medium">
+              AI/ML Infrastructure & MLOps
+            </span>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          viewport={{ once: true }}
+          className="mt-8 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
+        >
           <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">Certifications & Achievements</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex items-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 transition-colors">
