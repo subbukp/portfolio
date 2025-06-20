@@ -62,7 +62,6 @@ const Skills = () => {
       skills: ['PostgreSQL', 'MySQL', 'Redis', 'S3', 'VectorDB'],
       icon: <CircleStackIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
     },
-    
   ];
 
   return (
@@ -120,7 +119,10 @@ const Skills = () => {
               RAG (Retrieval-Augmented Generation)
             </span>
             <span className="px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium">
-              Vector Databases (Pinecone, Qdrant)
+              Vector Databases 
+            </span>
+            <span className="px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium">
+              MCP
             </span>
             <span className="px-4 py-2 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-full text-sm font-medium">
               LangChain & LlamaIndex
