@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Button from '@/components/shared/Button';
 import { CommandLineIcon as Terminal, CloudIcon as Cloud, ShieldCheckIcon as Shield, CogIcon as Cog } from '@heroicons/react/24/outline';
@@ -100,26 +101,47 @@ export default function Hero() {
             </Button>
           </motion.div>
 
+          {/* Creative 404 Easter Egg */}
           <motion.div
             variants={itemVariants}
-            className="flex gap-8 pt-8 border-t border-gray-200 dark:border-gray-700"
+            className="mt-6"
           >
-            {[
-              { icon: Cloud, label: "AWS & Azure" },
-              { icon: Cog, label: "CI/CD Pipelines" },
-              { icon: Shield, label: "Kubernetes" },
-              { icon: Terminal, label: "Infrastructure as Code" },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                className="flex flex-col items-center gap-2"
-                variants={iconVariants}
-                whileHover="hover"
+            <p className="text-xs text-gray-500 dark:text-gray-600">
+              <span className="mr-1">🔍</span>
+              Psst... Looking for something that doesn't exist? I built a{' '}
+              <Link 
+                href="/this-page-totally-does-not-exist-404" 
+                className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 underline decoration-dotted underline-offset-2 transition-all hover:decoration-wavy"
               >
-                <item.icon className="w-8 h-8 text-blue-600 dark:text-blue-400" />
-                <span className="text-sm text-gray-600 dark:text-gray-400">{item.label}</span>
-              </motion.div>
-            ))}
+                404 page
+              </Link>{' '}
+              that's cooler than most production deployments
+              <span className="inline-block ml-1 animate-pulse">✨</span>
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={itemVariants}
+            className="pt-8 border-t border-gray-200 dark:border-gray-700"
+          >
+            <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Core Expertise</h3>
+            <div className="flex flex-wrap gap-2">
+              {[
+                "Cloud Platforms (AWS/Azure)",
+                "Kubernetes & Docker",
+                "CI/CD Automation",
+                "Infrastructure as Code",
+                "DevOps Tools",
+                "Monitoring & Observability"
+              ].map((skill, index) => (
+                <span
+                  key={index}
+                  className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
           </motion.div>
         </motion.div>
 
