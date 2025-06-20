@@ -75,46 +75,15 @@ const Skills = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, categoryIndex) => (
-            <motion.div
-              key={category.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow"
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-lg">
-                  {category.icon}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 break-words">{category.name}</h3>
-              </div>
-
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="mt-16 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
+          className="mb-16 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
         >
           <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">Currently Learning</h3>
-          <div className="flex flex-wrap gap-3 justify-center mb-8">
+          <div className="flex flex-wrap gap-3 justify-center">
             <span className="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">
               RAG (Retrieval-Augmented Generation)
             </span>
@@ -138,6 +107,37 @@ const Skills = () => {
             </span>
           </div>
         </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {skillCategories.map((category, categoryIndex) => (
+            <motion.div
+              key={category.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: categoryIndex * 0.1 + 0.3 }}
+              viewport={{ once: true }}
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-lg">
+                  {category.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 break-words">{category.name}</h3>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
