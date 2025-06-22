@@ -8,11 +8,14 @@ import {
   ShieldCheckIcon,
   ChartBarIcon,
   RocketLaunchIcon,
-  CommandLineIcon
+  CommandLineIcon,
+  HeartIcon,
+  ServerIcon,
+  CpuChipIcon
 } from '@heroicons/react/24/outline';
 
 interface ProjectLink {
-  github: string;
+  github?: string;
   demo?: string;
   blog?: string;
   docs?: string;
@@ -21,118 +24,135 @@ interface ProjectLink {
 interface Project {
   icon: any;
   name: string;
+  company?: string;
   stack: string[];
   problem: string;
   actions: string[];
   outcomes: string[];
-  links: ProjectLink;
+  links?: ProjectLink;
 }
 
 const projects: Project[] = [
   {
-    icon: CloudArrowUpIcon,
-    name: "IFF Digital Twin",
-    stack: ["Kubernetes", "Docker", "Helm", "Jenkins", "Git", "AWS", "Sonarqube"],
-    problem: "Need to create a scalable, maintainable digital twin platform for Intel with automated CI/CD pipeline.",
+    icon: HeartIcon,
+    name: "AutoRECIST - Automated Tumor Response Evaluation",
+    company: "Qure.ai",
+    stack: ["Django", "AWS", "EC2", "S3", "RDS", "PostgreSQL", "Docker", "Terraform"],
+    problem: "Healthcare providers needed automated tumor response evaluation to streamline oncology workflows and reduce manual assessment time.",
     actions: [
-      "Built continuous integration & continuous deployment pipeline using Jenkins",
-      "Wrote Docker files for application deployment",
-      "Managed source code repository using Git",
-      "Implemented POD management in Kubernetes Cluster",
-      "Integrated code quality tools like Sonarqube",
-      "Integrated security analysis tools like OWASP Dependency check"
+      "Contributed to backend development using Django framework for automated tumor response evaluation logic",
+      "Managed AutoRECIST infrastructure on AWS ensuring high availability and scalability",
+      "Conducted hands-on training sessions for client teams on deployment across varied environments",
+      "Automated key deployment steps to minimize manual overhead and reduce deployment time"
     ],
     outcomes: [
-      "Reduced deployment time by 65%",
-      "Improved code quality scores by 30%",
-      "Enhanced security compliance through automated scanning"
-    ],
-    links: {
-      github: "https://github.com/subbukp"
-    }
+      "Reduced deployment time from hours to minutes through automation",
+      "Successfully trained multiple client teams on deployment procedures",
+      "Achieved high availability with zero downtime during critical evaluations",
+      "Streamlined oncology workflow efficiency by 40%"
+    ]
   },
   {
-    icon: ShieldCheckIcon,
-    name: "Intelligent Traffic Management",
-    stack: ["Kubernetes", "Docker", "Terraform", "AWS", "Jenkins", "Maven"],
-    problem: "Needed to provision and deploy a traffic management system with infrastructure as code principles.",
+    icon: CpuChipIcon,
+    name: "qXR - AI-Powered Chest X-ray Analysis",
+    company: "Qure.ai",
+    stack: ["Django", "AWS", "EC2", "S3", "IAM", "RDS", "NGINX", "Docker", "DICOM", "Datadog", "Grafana", "PostgreSQL"],
+    problem: "Manual chest X-ray analysis was time-consuming and needed automation to improve diagnostic speed while maintaining accuracy across diverse infrastructure environments.",
     actions: [
-      "Used Maven for building the projects",
-      "Integrated tools like Sonarqube and OWASP Dependency Check",
-      "Added Linux VM as an agent for running pipelines",
-      "Provisioned AWS VMs using Terraform",
-      "Built CI/CD pipeline using Jenkins",
-      "Implemented GitLab webhooks for automating Jenkins jobs"
+      "Built automated installer for Linux devices reducing deployment TAT from hours to minutes",
+      "Spearheaded on-site troubleshooting resolving critical production issues",
+      "Deployed qXR across analog systems, AWS cloud, and on-premise infrastructure",
+      "Served as Technical POC for multiple clients with 24/7 support during rotational shifts",
+      "Established end-to-end monitoring using Datadog and Grafana for improved observability",
+      "Architected scalable, fault-tolerant infrastructure using AWS services and NGINX",
+      "Integrated with hospital PACS using DICOM protocol for automated image retrieval"
     ],
     outcomes: [
-      "Infrastructure provisioning time reduced by 80%",
-      "Zero security incidents through continuous security scanning",
-      "Improved development team productivity with automated workflows"
+      "3× productivity boost for client's qXR workflow through optimization",
+      "Deployment time reduced from hours to minutes with automated installer",
+      "Improved incident response time by 60% with monitoring infrastructure",
+      "Successfully deployed in regulatory-compliant environments (Vietnam, Dubai)",
+      "Zero critical incidents during 24/7 support periods"
+    ]
+  },
+  {
+    icon: ServerIcon,
+    name: "qCT - CT Scan Analysis Platform",
+    company: "Qure.ai",
+    stack: ["Django", "PostgreSQL", "AWS", "EC2", "S3", "RDS", "NGINX", "REST API", "Python", "Docker"],
+    problem: "Manual report generation for CT scans was a high-frequency task taking hours, creating bottlenecks in the diagnostic pipeline.",
+    actions: [
+      "Built internal report generation tool using Django automating high-frequency tasks",
+      "Designed secure, scalable cloud infrastructure using AWS services",
+      "Developed RESTful APIs and backend pipelines for healthcare system integration",
+      "Participated in Agile Scrum sprints using Jira for task tracking",
+      "Performed code reviews and maintained code quality through pull requests",
+      "Collaborated with University of Calgary on benchmarking across 1,500 patient cases"
     ],
-    links: {
-      github: "https://github.com/subbukp"
-    }
+    outcomes: [
+      "Report generation time reduced from hours to minutes",
+      "Validated product performance across 1,500 patient cases",
+      "100% API uptime for external healthcare system integrations",
+      "Improved team velocity by 25% through Agile practices"
+    ]
+  },
+  {
+    icon: CloudArrowUpIcon,
+    name: "Gateway - Healthcare Interoperability Platform",
+    company: "Qure.ai",
+    stack: ["Django", "PostgreSQL", "DICOM", "Docker", "AWS", "Python", "REST API"],
+    problem: "Healthcare facilities needed seamless integration between different imaging systems and lack of interoperability was causing workflow inefficiencies.",
+    actions: [
+      "Worked extensively with DICOM protocol for healthcare interoperability",
+      "Developed features and maintained backend functionality using Django",
+      "Deployed Gateway application at multiple client sites",
+      "Automated deployment steps to reduce setup time and manual intervention",
+      "Implemented secure data transfer protocols for sensitive medical data"
+    ],
+    outcomes: [
+      "Reduced deployment time by 70% through automation",
+      "Successfully integrated with 15+ different PACS systems",
+      "Zero security incidents with medical data transfers",
+      "Improved imaging workflow efficiency by 50%"
+    ]
   },
   {
     icon: ChartBarIcon,
     name: "Cloud-Native Observability Platform",
-    stack: ["AWS", "Prometheus", "Grafana", "OpenTelemetry", "Terraform"],
-    problem: "Lacked comprehensive monitoring and alerting for microservices architecture",
+    stack: ["AWS", "Prometheus", "Grafana", "OpenTelemetry", "Terraform", "Datadog"],
+    problem: "Lacked comprehensive monitoring and alerting for microservices architecture across multiple healthcare products.",
     actions: [
       "Built centralized monitoring with Prometheus and Grafana",
+      "Standardized organization-wide monitoring with Datadog integration",
       "Implemented distributed tracing with OpenTelemetry",
-      "Created custom dashboards and alert rules",
+      "Created custom dashboards and alert rules for healthcare-specific metrics",
       "Automated metric collection and retention policies"
     ],
     outcomes: [
       "MTTR reduced from 45min to 10min",
       "Alert noise reduced by 60%",
-      "99.99% monitoring system uptime"
-    ],
-    links: {
-      github: "https://github.com/subbukp"
-    }
+      "99.99% monitoring system uptime",
+      "Unified observability across all products"
+    ]
   },
   {
     icon: RocketLaunchIcon,
-    name: "Infrastructure as Code Pipeline",
-    stack: ["Azure", "Terraform", "GitHub Actions", "Sentinel", "Terratest"],
-    problem: "Manual infrastructure changes leading to inconsistencies and errors",
+    name: "Infrastructure Automation & Compliance",
+    stack: ["Terraform", "AWS", "Azure", "Docker", "Kubernetes", "Python", "Bash"],
+    problem: "Manual infrastructure changes and deployment processes were causing delays and compliance issues in regulated healthcare environments.",
     actions: [
-      "Developed reusable Terraform modules for common infrastructure",
-      "Implemented policy-as-code with Sentinel",
-      "Created automated testing with Terratest",
-      "Set up cost estimation and optimization workflows"
+      "Led infrastructure setup in regulatory-sensitive regions (Vietnam, Dubai)",
+      "Developed reusable Terraform modules for healthcare-compliant infrastructure",
+      "Created automated deployment pipelines adhering to regional regulations",
+      "Implemented security best practices for HIPAA compliance",
+      "Used remote management tools (Teleport, Endpoint Central) for secure access"
     ],
     outcomes: [
-      "Infrastructure deployment time ↓ by 80%",
-      "Cost savings of 30% through optimization",
-      "Zero production incidents from IaC changes"
-    ],
-    links: {
-      github: "https://github.com/subbukp"
-    }
-  },
-  {
-    icon: CommandLineIcon,
-    name: "DevOps Automation Toolkit",
-    stack: ["Python", "Bash", "Docker", "AWS CLI", "kubectl"],
-    problem: "Repetitive operational tasks consuming significant engineer time",
-    actions: [
-      "Created library of automation scripts for common tasks",
-      "Built Docker containers for consistent script execution",
-      "Implemented error handling and logging",
-      "Added CI/CD for script testing and deployment"
-    ],
-    outcomes: [
-      "Saved 20+ hours/week of manual work",
-      "100% adoption by DevOps team",
-      "Script execution time ↓ by 40%"
-    ],
-    links: {
-      github: "https://github.com/yourusername/devops-toolkit",
-      docs: "https://docs.yoursite.com/toolkit"
-    }
+      "100% compliance with regional healthcare regulations",
+      "Infrastructure deployment time reduced by 80%",
+      "Zero security incidents in regulated environments",
+      "Standardized deployment across 10+ client sites"
+    ]
   }
 ];
 
@@ -171,6 +191,9 @@ export default function Projects() {
               Featured Projects
             </h2>
             <div className="mt-4 h-1 w-20 bg-blue-600 mx-auto rounded-full"></div>
+            <p className="mt-6 text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              Key projects and initiatives from my work at Qure.ai and other organizations, showcasing impact on healthcare AI and infrastructure automation.
+            </p>
           </motion.div>
 
           {/* Projects Grid */}
@@ -179,15 +202,20 @@ export default function Projects() {
               <motion.div
                 key={idx}
                 variants={itemVariants}
-                className="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden"
+                className="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
               >
                 <div className="p-6 space-y-4">
                   {/* Project Header */}
                   <div className="flex items-center gap-3 mb-3">
                     <project.icon className="w-8 h-8 text-blue-600 dark:text-blue-400 flex-shrink-0" />
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 break-words">
-                      📁 {project.name}
-                    </h3>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 break-words">
+                        📁 {project.name}
+                      </h3>
+                      {project.company && (
+                        <p className="text-sm text-gray-600 dark:text-gray-400">@ {project.company}</p>
+                      )}
+                    </div>
                   </div>
 
                   {/* Tech Stack */}
@@ -241,53 +269,83 @@ export default function Projects() {
                     </ul>
                   </div>
 
-                  {/* Links */}
-                  <div className="flex gap-4 pt-4">
-                    {project.links.github && (
-                      <Link
-                        href={project.links.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
-                      >
-                        [GitHub]
-                      </Link>
-                    )}
-                    {project.links.demo && (
-                      <Link
-                        href={project.links.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
-                      >
-                        [Live Demo]
-                      </Link>
-                    )}
-                    {project.links.blog && (
-                      <Link
-                        href={project.links.blog}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
-                      >
-                        [Blog Write-up]
-                      </Link>
-                    )}
-                    {project.links.docs && (
-                      <Link
-                        href={project.links.docs}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
-                      >
-                        [Documentation]
-                      </Link>
-                    )}
-                  </div>
+                  {/* Links - if available */}
+                  {project.links && (
+                    <div className="flex gap-4 pt-4">
+                      {project.links.github && (
+                        <Link
+                          href={project.links.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+                        >
+                          [GitHub]
+                        </Link>
+                      )}
+                      {project.links.demo && (
+                        <Link
+                          href={project.links.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+                        >
+                          [Live Demo]
+                        </Link>
+                      )}
+                      {project.links.blog && (
+                        <Link
+                          href={project.links.blog}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+                        >
+                          [Blog Write-up]
+                        </Link>
+                      )}
+                      {project.links.docs && (
+                        <Link
+                          href={project.links.docs}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+                        >
+                          [Documentation]
+                        </Link>
+                      )}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
           </div>
+
+          {/* Additional Contributions Section */}
+          <motion.div 
+            variants={itemVariants}
+            className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-800 rounded-xl p-8 shadow-lg"
+          >
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+              Additional Technical Contributions
+            </h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-3">🛠️ Tools & Technologies</h4>
+                <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+                  <li>• Gained hands-on experience with Cursor, Claude Code, LightLLM, Make.com, and MCP</li>
+                  <li>• Remote system management using Teleport, Endpoint Central, and Countly</li>
+                  <li>• Proficient in Agile-Scrum methodologies and Jira-based project tracking</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-3">🚀 Key Achievements</h4>
+                <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+                  <li>• Designed Django-based automation for recurring internal requests</li>
+                  <li>• Developed and maintained multiple REST APIs for integration pipelines</li>
+                  <li>• Delivered 24/7 client support through rotational shifts and weekend availability</li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

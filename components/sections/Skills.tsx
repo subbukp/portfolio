@@ -19,7 +19,7 @@ const Skills = () => {
   const skillCategories = [
     {
       name: 'Languages & Frameworks',
-      skills: ['Python', 'Django', 'C#', '.NET', 'C++', "Next.js"],
+      skills: ['Python', 'Django', 'C#', '.NET', 'C++', "Next.js", "REST API"],
       icon: <CodeBracketIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
     },
     {
@@ -34,22 +34,22 @@ const Skills = () => {
     },
     {
       name: 'Infrastructure as Code',
-      skills: ['Terraform', 'Ansible', 'CloudFormation'],
+      skills: ['Terraform', 'Ansible', 'CloudFormation', 'ARM Templates', 'Pulumi'],
       icon: <CogIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
     },
     {
       name: 'Cloud Platforms',
-      skills: ['AWS', 'Azure', 'EC2/VPC', 'S3/RDS', 'Lambda'],
+      skills: ['AWS', 'Azure', 'EC2', 'VPC', 'S3', 'RDS', 'Lambda', 'IAM', 'Azure Functions'],
       icon: <CloudIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
     },
     {
       name: 'DevOps Tools',
-      skills: ['Git', 'GitLFS', 'JIRA', 'Docker Registry/ECR'],
+      skills: ['Git', 'GitLFS', 'JIRA', 'Docker Registry/ECR', 'DICOM', 'Teleport', 'Endpoint Central', 'Countly'],
       icon: <WrenchScrewdriverIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
     },
     {
       name: 'Monitoring & Observability',
-      skills: ['Prometheus', 'Grafana', 'CloudWatch'],
+      skills: ['Prometheus', 'Grafana', 'CloudWatch', 'Datadog', 'Azure Monitor', 'New Relic', 'ELK Stack'],
       icon: <ShieldCheckIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
     },
     {
@@ -59,8 +59,13 @@ const Skills = () => {
     },
     {
       name: 'Databases & Storage',
-      skills: ['PostgreSQL', 'MySQL', 'Redis', 'S3', 'VectorDB'],
+      skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'S3', 'Azure Blob Storage', 'VectorDB'],
       icon: <CircleStackIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
+    },
+    {
+      name: 'Healthcare & Medical Tech',
+      skills: ['DICOM Protocol', 'PACS Integration', 'HIPAA Compliance', 'Medical Imaging', 'HL7'],
+      icon: <ShieldCheckIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
     },
   ];
 
@@ -104,6 +109,15 @@ const Skills = () => {
             </span>
             <span className="px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-full text-sm font-medium">
               AI/ML Infrastructure & MLOps
+            </span>
+            <span className="px-4 py-2 bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 rounded-full text-sm font-medium">
+              Cursor & Claude Code
+            </span>
+            <span className="px-4 py-2 bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-300 rounded-full text-sm font-medium">
+              Make.com & n8n
+            </span>
+            <span className="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium">
+              LightLLM
             </span>
           </div>
         </motion.div>

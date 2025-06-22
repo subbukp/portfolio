@@ -84,13 +84,14 @@ const About = () => {
               experience in designing and implementing automated deployment pipelines and configuration management systems.
             </p>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
-              Currently working as a Site Reliability Engineer at Qure.ai, previously at Rashtriya Chemical and Fertilizers (PSU) and Tata Consultancy Services, 
-              where I collaborated with development teams to implement agile methodology and performance tuning procedures.
+              Currently working as a Site Reliability Engineer at Qure.ai, specializing in healthcare AI infrastructure and deployment automation.
+              At Qure.ai, I've successfully deployed critical healthcare products like AutoRECIST, qXR, qCT, and Gateway across diverse environments 
+              including AWS cloud, on-premise infrastructure, and regulatory-compliant regions like Vietnam and Dubai.
             </p>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
-              My work has resulted in a 30% reduction in security incidents and a 25% improvement in system performance.
-              I'm proficient in monitoring and alerting systems, reducing mean time to resolution (MTTR) by 40% and improving 
-              system uptime by 25%.
+              My work has resulted in 3× productivity improvements, deployment time reductions from hours to minutes, and maintaining 
+              99.99% uptime for critical healthcare systems. I serve as Technical POC for multiple clients, providing 24/7 support 
+              and have established comprehensive monitoring using Datadog and Grafana, reducing MTTR by 60%.
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
               <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium mb-2">
@@ -123,26 +124,26 @@ const About = () => {
           >
             <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
               <CloudArrowUpIcon className="w-10 h-10 text-blue-600 dark:text-blue-400 mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Cloud Infrastructure</h3>
-              <p className="text-gray-600 dark:text-gray-400">Expert in AWS and Azure cloud platforms for robust, scalable services.</p>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Healthcare AI Infrastructure</h3>
+              <p className="text-gray-600 dark:text-gray-400">Deployed qXR, qCT, AutoRECIST across AWS cloud and on-premise in regulatory regions.</p>
             </div>
 
             <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
               <CodeBracketIcon className="w-10 h-10 text-blue-600 dark:text-blue-400 mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">CI/CD Pipelines</h3>
-              <p className="text-gray-600 dark:text-gray-400">Building automated pipelines with Jenkins, Azure DevOps, and AWS DevOps.</p>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Automation Excellence</h3>
+              <p className="text-gray-600 dark:text-gray-400">Built installers reducing deployment from hours to minutes, 3× productivity boost.</p>
             </div>
 
             <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
               <CommandLineIcon className="w-10 h-10 text-blue-600 dark:text-blue-400 mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Infrastructure as Code</h3>
-              <p className="text-gray-600 dark:text-gray-400">Implementing IaC with Terraform and Ansible for consistent environments.</p>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">24/7 Technical POC</h3>
+              <p className="text-gray-600 dark:text-gray-400">Leading client support with DICOM integrations and real-time troubleshooting.</p>
             </div>
 
             <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
               <ShieldCheckIcon className="w-10 h-10 text-blue-600 dark:text-blue-400 mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Security Best Practices</h3>
-              <p className="text-gray-600 dark:text-gray-400">Integrating security tools like OWASP to ensure secure applications.</p>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Observability & Monitoring</h3>
+              <p className="text-gray-600 dark:text-gray-400">Established Datadog/Grafana monitoring, reducing MTTR by 60%.</p>
             </div>
           </motion.div>
         </div>
