@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CalendarIcon, ClockIcon, ArrowRightIcon, BookOpenIcon } from '@heroicons/react/24/outline';
-import { getAllPosts } from '@/lib/blog';
 import { BlogPost } from '@/types/blog';
+import { blogPosts as staticBlogPosts } from '@/data/blog-posts';
 
 export default function Blog() {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
@@ -14,8 +14,8 @@ export default function Blog() {
   const [seriesHighlight, setSeriesHighlight] = useState<any>(null);
   
   useEffect(() => {
-    // Load blog data
-    const posts = getAllPosts();
+    // Load blog data from static source
+    const posts = staticBlogPosts;
     setBlogPosts(posts);
     
     // Get featured post (first one that has featured: true, or default to first post)

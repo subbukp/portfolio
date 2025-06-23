@@ -17,22 +17,39 @@ const Resume = () => {
       title: 'Site Reliability Engineer',
       company: 'Qure.ai',
       duration: 'Oct 2024 - Present',
-      role: 'SRE',
-      description: 'Working on infrastructure reliability, automating operations, and implementing SRE practices to maintain and improve system availability and performance.'
+      role: 'Developer & SRE',
+      description: 'Leading deployment and infrastructure management for healthcare AI products including AutoRECIST, qXR, qCT, and Gateway. Built automated installers reducing deployment time from hours to minutes, achieving 3× productivity boost. Developed Django-based backend features and REST APIs while ensuring 99.99% uptime. Serve as Technical POC for multiple clients with 24/7 support, successfully deploying in regulatory-compliant regions like Vietnam and Dubai. Established comprehensive monitoring using Datadog and Grafana, reducing MTTR by 60%.',
+      highlights: [
+        'Built automated deployment tools reducing TAT from hours to minutes',
+        'Managed healthcare AI infrastructure across AWS cloud and on-premise',
+        'Integrated with hospital PACS using DICOM protocol',
+        'Technical POC providing 24/7 client support'
+      ]
     },
     {
       title: 'Management Trainee',
       company: 'Rashtriya Chemical and Fertilizers (PSU)',
       duration: 'Jun 2024 - Oct 2024',
-      role: '.Net Developer and DevOps Engineer',
-      description: 'Worked on .Net development and implementing DevOps practices in a government public sector undertaking.'
+      role: '.NET Developer & DevOps Engineer',
+      description: 'Developed .NET applications and implemented DevOps practices in a government public sector undertaking. Worked on modernizing legacy systems and introducing automation practices.',
+      highlights: [
+        'Developed backend features using .NET framework',
+        'Introduced DevOps practices to traditional workflows',
+        'Collaborated with government stakeholders'
+      ]
     },
     {
       title: 'Systems Engineer',
       company: 'Tata Consultancy Services',
       duration: 'Aug 2021 - Jun 2024',
-      role: 'DevOps Engineer',
-      description: 'Designed and implemented automated deployment pipelines and configuration management systems. Collaborated with development teams to implement agile methodology and performance tuning procedures, resulting in a 30% reduction in security incidents and a 25% improvement in system performance.'
+      role: 'Developer & DevOps Engineer',
+      description: 'Worked on Intel projects including IFF Digital Twin and Intelligent Traffic Management. Created REST APIs using context broker framework and managed Kubernetes deployments. Implemented MQTT and Kafka for real-time data streaming. Used Snyk for vulnerability scanning, addressing critical issues including Log4j. Achieved 99% platform uptime and reduced deployment effort by 30% using Helm automation.',
+      highlights: [
+        'Developed APIs for Digital Twin platform using REST framework',
+        'Managed POD deployments in Kubernetes clusters',
+        'Implemented real-time messaging with MQTT and Kafka',
+        'Improved security posture through automated vulnerability scanning'
+      ]
     }
   ];
 
@@ -115,7 +132,14 @@ const Resume = () => {
                     <span className="mx-2">•</span>
                     <span className="font-medium text-blue-600 dark:text-blue-400">{exp.role}</span>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-300">{exp.description}</p>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">{exp.description}</p>
+                  {exp.highlights && (
+                    <ul className="list-disc list-inside space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      {exp.highlights.map((highlight, idx) => (
+                        <li key={idx}>{highlight}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </motion.div>
             ))}
