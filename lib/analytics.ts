@@ -35,6 +35,9 @@ const LOGS_FILE = path.join(process.cwd(), 'logs', 'visitors.json');
 const MAX_LOGS = 10000; // Prevent file from growing too large
 const ANALYTICS_PASSWORD = process.env.ANALYTICS_PASSWORD || 'admin123'; // Should be in env vars
 
+// For Vercel deployment, we'll use an in-memory store as a fallback
+let inMemoryLogs: VisitorLog[] = [];
+
 // Helper functions
 export function hashIP(ip: string): string {
   return crypto.createHash('sha256').update(ip).digest('hex').substring(0, 16);
@@ -74,6 +77,12 @@ function detectDevice(userAgent: string): string {
 
 // Log management functions
 export async function readLogs(): Promise<VisitorLog[]> {
+  // Check if we're in Vercel environment
+  if (process.env.VERCEL) {
+    // Use in-memory storage for Vercel
+    return inMemoryLogs;
+  }
+  
   try {
     // Ensure directory exists first
     const logsDir = path.dirname(LOGS_FILE);
@@ -95,17 +104,26 @@ export async function readLogs(): Promise<VisitorLog[]> {
 }
 
 export async function writeLogs(logs: VisitorLog[]): Promise<void> {
+  // Keep only the most recent logs to prevent memory bloat
+  const recentLogs = logs.slice(-MAX_LOGS);
+  
+  // Check if we're in Vercel environment
+  if (process.env.VERCEL) {
+    // Use in-memory storage for Vercel
+    inMemoryLogs = recentLogs;
+    return;
+  }
+  
   try {
     // Ensure directory exists
     const logsDir = path.dirname(LOGS_FILE);
     await fs.mkdir(logsDir, { recursive: true });
     
-    // Keep only the most recent logs to prevent file bloat
-    const recentLogs = logs.slice(-MAX_LOGS);
     await fs.writeFile(LOGS_FILE, JSON.stringify(recentLogs, null, 2));
   } catch (error) {
     console.error('Error writing logs:', error);
-    throw error;
+    // Fallback to in-memory storage
+    inMemoryLogs = recentLogs;
   }
 }
 

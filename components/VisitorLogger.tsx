@@ -8,7 +8,7 @@ export default function VisitorLogger() {
   
   useEffect(() => {
     // Debug mode - set to true to see console logs
-    const DEBUG = true;
+    const DEBUG = false;
     const logVisit = async () => {
       try {
         // Don't log visits to the analytics page itself
@@ -34,8 +34,13 @@ export default function VisitorLogger() {
         });
         
         if (!response.ok) {
-          const error = await response.text();
-          console.error('Log visit failed:', response.status, error);
+          const errorData = await response.json();
+          if (DEBUG) {
+            console.warn('Log visit failed:', response.status, errorData);
+            if (errorData.isVercel) {
+              console.info('Running on Vercel - using in-memory storage');
+            }
+          }
         } else if (DEBUG) {
           const result = await response.json();
           console.log('Visit logged successfully:', result);

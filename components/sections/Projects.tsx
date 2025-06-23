@@ -187,6 +187,10 @@ const projects: Project[] = [
 export default function Projects() {
   const [showAllProjects, setShowAllProjects] = useState(false);
   
+  console.log('Total projects:', projects.length);
+  console.log('Show all projects:', showAllProjects);
+  console.log('Projects to show:', showAllProjects ? projects.length : 4);
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -223,6 +227,9 @@ export default function Projects() {
             <div className="mt-4 h-1 w-20 bg-blue-600 mx-auto rounded-full"></div>
             <p className="mt-6 text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
               Key projects and initiatives from my work at Qure.ai and other organizations, showcasing impact on healthcare AI and infrastructure automation.
+            </p>
+            <p className="mt-2 text-sm text-gray-500 dark:text-gray-500">
+              Showing {showAllProjects ? projects.length : Math.min(4, projects.length)} of {projects.length} projects
             </p>
           </motion.div>
 
