@@ -7,6 +7,8 @@ export default function VisitorLogger() {
   const pathname = usePathname();
   
   useEffect(() => {
+    // Debug mode - set to true to see console logs
+    const DEBUG = true;
     const logVisit = async () => {
       try {
         // Don't log visits to the analytics page itself
@@ -15,8 +17,12 @@ export default function VisitorLogger() {
         // Get referrer
         const referrer = document.referrer || '';
         
+        if (DEBUG) {
+          console.log('Logging visit:', { page: pathname, referrer });
+        }
+        
         // Send log request
-        await fetch('/api/log-visit', {
+        const response = await fetch('/api/log-visit', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -26,6 +32,14 @@ export default function VisitorLogger() {
             referrer: referrer,
           }),
         });
+        
+        if (!response.ok) {
+          const error = await response.text();
+          console.error('Log visit failed:', response.status, error);
+        } else if (DEBUG) {
+          const result = await response.json();
+          console.log('Visit logged successfully:', result);
+        }
       } catch (error) {
         // Silently fail - we don't want to disrupt the user experience
         console.error('Failed to log visit:', error);
