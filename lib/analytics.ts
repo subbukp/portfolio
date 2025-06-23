@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+import { promises as fs } from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 
@@ -75,18 +75,38 @@ function detectDevice(userAgent: string): string {
 // Log management functions
 export async function readLogs(): Promise<VisitorLog[]> {
   try {
+    // Ensure directory exists first
+    const logsDir = path.dirname(LOGS_FILE);
+    await fs.mkdir(logsDir, { recursive: true });
+    
+    // Try to read the file
     const data = await fs.readFile(LOGS_FILE, 'utf-8');
     return JSON.parse(data);
-  } catch (error) {
-    // If file doesn't exist or is corrupted, return empty array
+  } catch (error: any) {
+    // If file doesn't exist, create it with empty array
+    if (error.code === 'ENOENT') {
+      await fs.writeFile(LOGS_FILE, '[]');
+      return [];
+    }
+    // For any other error, return empty array
+    console.error('Error reading logs:', error);
     return [];
   }
 }
 
 export async function writeLogs(logs: VisitorLog[]): Promise<void> {
-  // Keep only the most recent logs to prevent file bloat
-  const recentLogs = logs.slice(-MAX_LOGS);
-  await fs.writeFile(LOGS_FILE, JSON.stringify(recentLogs, null, 2));
+  try {
+    // Ensure directory exists
+    const logsDir = path.dirname(LOGS_FILE);
+    await fs.mkdir(logsDir, { recursive: true });
+    
+    // Keep only the most recent logs to prevent file bloat
+    const recentLogs = logs.slice(-MAX_LOGS);
+    await fs.writeFile(LOGS_FILE, JSON.stringify(recentLogs, null, 2));
+  } catch (error) {
+    console.error('Error writing logs:', error);
+    throw error;
+  }
 }
 
 export async function addLog(log: Omit<VisitorLog, 'id'>): Promise<void> {
