@@ -104,19 +104,20 @@ export default function Hero() {
           {/* Creative 404 Easter Egg */}
           <motion.div
             variants={itemVariants}
-            className="mt-6"
+            className="mt-6 p-3 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-lg border border-purple-200 dark:border-purple-800"
           >
-            <p className="text-xs text-gray-500 dark:text-gray-600">
-              <span className="mr-1">🔍</span>
-              Psst... Looking for something that doesn't exist? I built a{' '}
+            <p className="text-sm text-gray-700 dark:text-gray-300">
+              <span className="mr-2 text-lg">🎮</span>
+              <span className="font-semibold">Fun fact:</span> Even my errors are well-designed! Try clicking this{' '}
               <Link 
                 href="/this-page-totally-does-not-exist-404" 
-                className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 underline decoration-dotted underline-offset-2 transition-all hover:decoration-wavy"
+                className="inline-flex items-center gap-1 text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium underline decoration-2 decoration-purple-300 dark:decoration-purple-600 underline-offset-2 transition-all hover:decoration-wavy"
               >
-                404 page
+                broken link
+                <span className="text-xs">🔗💔</span>
               </Link>{' '}
-              that's cooler than most production deployments
-              <span className="inline-block ml-1 animate-pulse">✨</span>
+              to discover my custom <span className="font-mono text-purple-600 dark:text-purple-400">404</span> error page - it's like finding a secret level in a game!
+              <span className="inline-block ml-2 animate-bounce">🚀</span>
             </p>
           </motion.div>
 

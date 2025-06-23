@@ -61,7 +61,7 @@ const Resume = () => {
       description: 'Received for doing multiple POCs and getting good feedback, appreciation from engagements'
     },
     {
-      title: 'Hero Of The Cluster',
+      title: 'Star Team Award',
       description: 'Received for good work performance in the project'
     }
   ];

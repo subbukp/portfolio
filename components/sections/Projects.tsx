@@ -3,16 +3,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import {
-  CloudArrowUpIcon,
-  ShieldCheckIcon,
-  ChartBarIcon,
-  RocketLaunchIcon,
-  CommandLineIcon,
-  HeartIcon,
-  ServerIcon,
-  CpuChipIcon
-} from '@heroicons/react/24/outline';
+// Font Awesome imports
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faHeartPulse,
+  faXRay, 
+  faBrain,
+  faNetworkWired,
+  faDigitalTachograph,
+  faTrafficLight,
+  faHospital,
+  faMicrochip,
+  faServer,
+  faCloud,
+  faDatabase
+} from '@fortawesome/free-solid-svg-icons';
 
 interface ProjectLink {
   github?: string;
@@ -23,6 +28,7 @@ interface ProjectLink {
 
 interface Project {
   icon: any;
+  iconColor?: string;
   name: string;
   company?: string;
   stack: string[];
@@ -34,7 +40,8 @@ interface Project {
 
 const projects: Project[] = [
   {
-    icon: HeartIcon,
+    icon: faHeartPulse,
+    iconColor: "text-red-600 dark:text-red-400",
     name: "AutoRECIST - Automated Tumor Response Evaluation",
     company: "Qure.ai",
     stack: ["Django", "AWS", "EC2", "S3", "RDS", "PostgreSQL", "Docker", "Terraform"],
@@ -49,11 +56,13 @@ const projects: Project[] = [
       "Reduced deployment time from hours to minutes through automation",
       "Successfully trained multiple client teams on deployment procedures",
       "Achieved high availability with zero downtime during critical evaluations",
-      "Streamlined oncology workflow efficiency by 40%"
+      "Streamlined oncology workflow efficiency",
+      "Easy access to check nodule growth in each visit"
     ]
   },
   {
-    icon: CpuChipIcon,
+    icon: faXRay,
+    iconColor: "text-blue-600 dark:text-blue-400",
     name: "qXR - AI-Powered Chest X-ray Analysis",
     company: "Qure.ai",
     stack: ["Django", "AWS", "EC2", "S3", "IAM", "RDS", "NGINX", "Docker", "DICOM", "Datadog", "Grafana", "PostgreSQL"],
@@ -76,7 +85,8 @@ const projects: Project[] = [
     ]
   },
   {
-    icon: ServerIcon,
+    icon: faBrain,
+    iconColor: "text-purple-600 dark:text-purple-400",
     name: "qCT - CT Scan Analysis Platform",
     company: "Qure.ai",
     stack: ["Django", "PostgreSQL", "AWS", "EC2", "S3", "RDS", "NGINX", "REST API", "Python", "Docker"],
@@ -97,7 +107,8 @@ const projects: Project[] = [
     ]
   },
   {
-    icon: CloudArrowUpIcon,
+    icon: faNetworkWired,
+    iconColor: "text-green-600 dark:text-green-400",
     name: "Gateway - Healthcare Interoperability Platform",
     company: "Qure.ai",
     stack: ["Django", "PostgreSQL", "DICOM", "Docker", "AWS", "Python", "REST API"],
@@ -111,56 +122,67 @@ const projects: Project[] = [
     ],
     outcomes: [
       "Reduced deployment time by 70% through automation",
-      "Successfully integrated with 15+ different PACS systems",
+      "Successfully integrated with 5+ different PACS systems",
       "Zero security incidents with medical data transfers",
       "Improved imaging workflow efficiency by 50%"
     ]
   },
   {
-    icon: CommandLineIcon,
+    icon: faDigitalTachograph,
+    iconColor: "text-indigo-600 dark:text-indigo-400",
     name: "IFF Digital Twin",
     company: "TCS (Client: Intel)",
-    stack: ["Kubernetes", "Docker", "Helm", "Jenkins", "Git", "AWS", "SonarQube", "Linux", "Postman", "GitLab", "JIRA"],
-    problem: "Need to create a scalable, maintainable digital twin platform for Intel with automated CI/CD pipeline, security scanning, and code quality checks.",
+    stack: ["Context Broker", "Kubernetes", "Docker", "Helm", "Git", "AWS", "Linux", "Postman", "MQTT", "Kafka"],
+    problem: "Need to create a scalable, maintainable digital twin platform for Intel",
     actions: [
-      "Built continuous integration & continuous deployment pipeline using Jenkins",
+      // "Built continuous integration & continuous deployment pipeline using Jenkins",
+      "Created API's using REST framework",
       "Wrote Docker files for application deployment",
       "Managed source code repository using Git",
       "Implemented POD management in Kubernetes Cluster",
-      "Integrated code quality tools like SonarQube",
-      "Integrated security analysis tools like OWASP Dependency check",
+      // "Integrated code quality tools like SonarQube",
+      // "Integrated security analysis tools like OWASP Dependency check",
       "Prepared high level documentation explaining Installation & Configuration",
-      "Created GitLab webhooks for automating Jenkins jobs",
-      "Used JIRA tool for ticket tracking"
+      "Used snyk tool to check vulnarability in images",
+      "Utilized MQTT and Kafka for efficient messaging and real-time data streaming within the platform."
+      // "Created GitLab webhooks for automating Jenkins jobs",
+      // "Used JIRA tool for ticket tracking"
     ],
     outcomes: [
-      "Reduced deployment time by 65% through CI/CD automation",
-      "Improved code quality scores by 30% with SonarQube integration",
-      "Enhanced security compliance through automated OWASP scanning",
-      "Zero production incidents due to automated testing pipeline"
+      "Achieved 99% platform uptime leveraging Kubernetes for resilient deployments",
+      "Improved security posture by addressing vulnerabilities, including Log4j, through automated scanning",
+      "Reduced deployment effort by 30% with Helm-based automation",
+      "Accelerated team onboarding by 40% through clear, high-level technical documentation"
+      //"Improved secutiry of images against Log4j issue",
+      //"Achieving 99% system uptime and high availability",
+      // "Reduced deployment time by 65% through CI/CD automation",
+      // "Improved code quality scores by 30% with SonarQube integration",
+      // "Enhanced security compliance through automated OWASP scanning",
+      // "Zero production incidents due to automated testing pipeline"
     ]
   },
   {
-    icon: RocketLaunchIcon,
+    icon: faTrafficLight,
+    iconColor: "text-amber-600 dark:text-amber-400",
     name: "Intelligent Traffic Management",
     company: "TCS (Client: Intel)",
-    stack: ["Kubernetes", "Docker", "Terraform", "AWS", "Jenkins", "Maven", "SonarQube", "OWASP", "GitLab"],
+    stack: ["Kubernetes", "Docker", "Grafana"],
     problem: "Needed to provision and deploy a traffic management system with infrastructure as code principles, automated security scanning, and scalable architecture.",
     actions: [
       "Used Maven for building the projects",
-      "Integrated tools like SonarQube and OWASP Dependency Check",
-      "Added Linux VM as an agent for running pipelines",
-      "Provisioned AWS VMs using Terraform",
-      "Built CI/CD pipeline using Jenkins",
-      "Implemented GitLab webhooks for automating Jenkins jobs",
+      // "Integrated tools like SonarQube and OWASP Dependency Check",
+      // "Added Linux VM as an agent for running pipelines",
+      // "Provisioned AWS VMs using Terraform",
+      // "Built CI/CD pipeline using Jenkins",
+      // "Implemented GitLab webhooks for automating Jenkins jobs",
       "Managed POD deployment in Kubernetes Cluster",
-      "Created comprehensive documentation for installation and configuration"
+      //"Created comprehensive documentation for installation and configuration"
     ],
-    outcomes: [
-      "Infrastructure provisioning time reduced by 80% with Terraform",
-      "Zero security vulnerabilities in production through OWASP integration",
-      "Improved development team productivity by 40% with automated workflows",
-      "Successfully scaled to handle 10x traffic increase"
+    //outcomes: [
+      //"Infrastructure provisioning time reduced by 80% with Terraform",
+      //"Zero security vulnerabilities in production through OWASP integration",
+      //"Improved development team productivity by 40% with automated workflows",
+      //"Successfully scaled to handle 10x traffic increase"
     ]
   }
 ];
@@ -216,10 +238,15 @@ export default function Projects() {
                 <div className="p-6 space-y-4">
                   {/* Project Header */}
                   <div className="flex items-center gap-3 mb-3">
-                    <project.icon className="w-8 h-8 text-blue-600 dark:text-blue-400 flex-shrink-0" />
+                    <div className="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                      <FontAwesomeIcon 
+                        icon={project.icon} 
+                        className={`w-8 h-8 ${project.iconColor || 'text-blue-600 dark:text-blue-400'}`}
+                      />
+                    </div>
                     <div>
                       <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 break-words">
-                        📁 {project.name}
+                        {project.name}
                       </h3>
                       {project.company && (
                         <p className="text-sm text-gray-600 dark:text-gray-400">@ {project.company}</p>

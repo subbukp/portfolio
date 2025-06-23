@@ -34,22 +34,22 @@ const Skills = () => {
     },
     {
       name: 'Infrastructure as Code',
-      skills: ['Terraform', 'Ansible', 'CloudFormation', 'ARM Templates', 'Pulumi'],
+      skills: ['Terraform', 'Ansible', 'CloudFormation'],
       icon: <CogIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
     },
     {
       name: 'Cloud Platforms',
-      skills: ['AWS', 'Azure', 'EC2', 'VPC', 'S3', 'RDS', 'Lambda', 'IAM', 'Azure Functions'],
+      skills: ['AWS', 'Azure', 'EC2', 'VPC', 'S3', 'RDS', 'Lambda', 'IAM'],
       icon: <CloudIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
     },
     {
       name: 'DevOps Tools',
-      skills: ['Git', 'GitLFS', 'JIRA', 'Docker Registry/ECR', 'DICOM', 'Teleport', 'Endpoint Central', 'Countly'],
+      skills: ['Git', 'GitLFS', 'JIRA', 'Docker Registry/ECR', 'Kubernetes'],
       icon: <WrenchScrewdriverIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
     },
     {
       name: 'Monitoring & Observability',
-      skills: ['Prometheus', 'Grafana', 'CloudWatch', 'Datadog', 'Azure Monitor', 'New Relic', 'ELK Stack'],
+      skills: ['Prometheus', 'Grafana', 'CloudWatch', 'Datadog'],
       icon: <ShieldCheckIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
     },
     {
@@ -59,12 +59,12 @@ const Skills = () => {
     },
     {
       name: 'Databases & Storage',
-      skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'S3', 'Azure Blob Storage', 'VectorDB'],
+      skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'S3', 'VectorDB'],
       icon: <CircleStackIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
     },
     {
       name: 'Healthcare & Medical Tech',
-      skills: ['DICOM Protocol', 'PACS Integration', 'HIPAA Compliance', 'Medical Imaging', 'HL7'],
+      skills: ['DICOM', 'DICOM Protocol', 'PACS Integration', 'HIPAA Compliance', 'Medical Imaging', 'HL7'],
       icon: <ShieldCheckIcon className="w-10 h-10 text-blue-600 dark:text-blue-400" />,
     },
   ];
@@ -99,13 +99,7 @@ const Skills = () => {
               MCP
             </span>
             <span className="px-4 py-2 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-full text-sm font-medium">
-              LangChain & LlamaIndex
-            </span>
-            <span className="px-4 py-2 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full text-sm font-medium">
-              Embedding Models & Fine-tuning
-            </span>
-            <span className="px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-full text-sm font-medium">
-              Semantic Search & Similarity
+              LangChain
             </span>
             <span className="px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-full text-sm font-medium">
               AI/ML Infrastructure & MLOps
@@ -114,7 +108,7 @@ const Skills = () => {
               Cursor & Claude Code
             </span>
             <span className="px-4 py-2 bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-300 rounded-full text-sm font-medium">
-              Make.com & n8n
+              Make.com
             </span>
             <span className="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium">
               LightLLM
