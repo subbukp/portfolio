@@ -6,10 +6,10 @@ import Link from 'next/link';
 // Font Awesome imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
-  faHeartPulse,
+  faBone,
   faXRay, 
   faBrain,
-  faNetworkWired,
+  faUpload,
   faDigitalTachograph,
   faTrafficLight
 } from '@fortawesome/free-solid-svg-icons';
@@ -35,7 +35,7 @@ interface Project {
 
 const projects: Project[] = [
   {
-    icon: faHeartPulse,
+    icon: faBone,
     iconColor: "text-red-600 dark:text-red-400",
     name: "AutoRECIST - Automated Tumor Response Evaluation",
     company: "Qure.ai",
@@ -102,7 +102,7 @@ const projects: Project[] = [
     ]
   },
   {
-    icon: faNetworkWired,
+    icon: faUpload,
     iconColor: "text-green-600 dark:text-green-400",
     name: "Gateway - Healthcare Interoperability Platform",
     company: "Qure.ai",

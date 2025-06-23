@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -8,6 +8,31 @@ import Button from '@/components/shared/Button';
 import { CommandLineIcon as Terminal, CloudIcon as Cloud, ShieldCheckIcon as Shield, CogIcon as Cog } from '@heroicons/react/24/outline';
 
 export default function Hero() {
+  const [randomUrl, setRandomUrl] = useState('/totally-fake-page-404');
+
+  const funnyUrls = [
+    '/unicorn-deployment-strategy',
+    '/secret-nuclear-codes',
+    '/why-vim-is-better-than-emacs',
+    '/how-to-exit-vim-help',
+    '/production-on-friday-guide',
+    '/delete-all-databases-tutorial',
+    '/sudo-make-me-a-sandwich',
+    '/coffee-driven-development',
+    '/bug-free-code-generator',
+    '/instant-senior-developer',
+    '/download-more-ram',
+    '/fix-all-bugs-button',
+    '/ctrl-z-production-mistakes',
+    '/ai-replaced-my-job',
+    '/zero-downtime-magic'
+  ];
+
+  const generateRandomUrl = () => {
+    const newUrl = funnyUrls[Math.floor(Math.random() * funnyUrls.length)];
+    setRandomUrl(newUrl);
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -104,21 +129,36 @@ export default function Hero() {
           {/* Creative 404 Easter Egg */}
           <motion.div
             variants={itemVariants}
-            className="mt-6 p-3 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-lg border border-purple-200 dark:border-purple-800"
+            className="mt-6 p-4 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-lg border border-purple-200 dark:border-purple-800"
           >
-            <p className="text-sm text-gray-700 dark:text-gray-300">
-              <span className="mr-2 text-lg">🎮</span>
-              <span className="font-semibold">Fun fact:</span> Even my errors are well-designed! Try clicking this{' '}
-              <Link 
-                href="/this-page-totally-does-not-exist-404" 
-                className="inline-flex items-center gap-1 text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium underline decoration-2 decoration-purple-300 dark:decoration-purple-600 underline-offset-2 transition-all hover:decoration-wavy"
-              >
-                broken link
-                <span className="text-xs">🔗💔</span>
-              </Link>{' '}
-              to discover my custom <span className="font-mono text-purple-600 dark:text-purple-400">404</span> error page - it's like finding a secret level in a game!
-              <span className="inline-block ml-2 animate-bounce">🚀</span>
-            </p>
+            <div className="space-y-3">
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                <span className="mr-2 text-lg">🎮</span>
+                <span className="font-semibold">Interactive 404 Challenge:</span> Test my custom error page!
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                <Link 
+                  href={randomUrl}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-all transform hover:scale-105 shadow-md"
+                >
+                  <span>Visit:</span>
+                  <span className="font-mono text-sm">{randomUrl}</span>
+                  <span className="text-xs">🚀</span>
+                </Link>
+                
+                <button
+                  onClick={generateRandomUrl}
+                  className="text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 underline underline-offset-2"
+                >
+                  🎲 Generate another fake URL
+                </button>
+              </div>
+              
+              <p className="text-xs text-gray-600 dark:text-gray-400 italic">
+                💡 Tip: Any URL that doesn't exist will show my custom 404 page. Try typing your own!
+              </p>
+            </div>
           </motion.div>
 
           <motion.div
