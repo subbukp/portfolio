@@ -1,82 +1,60 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   BriefcaseIcon, 
   AcademicCapIcon, 
   BuildingOfficeIcon,
-  CommandLineIcon,
   ServerIcon,
   ArrowDownTrayIcon
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 
 const Resume = () => {
+  const [showAllExperience, setShowAllExperience] = useState(false);
   const experiences = [
     {
       title: 'Site Reliability Engineer',
       company: 'Qure.ai',
       duration: 'Oct 2024 - Present',
-      role: 'SRE',
-      description: 'Working on infrastructure reliability, automating operations, and implementing SRE practices to maintain and improve system availability and performance.'
+      role: 'Developer & SRE',
+      description: 'Leading deployment and infrastructure management for healthcare AI products including AutoRECIST, qXR, qCT, and Gateway. Built automated installers reducing deployment time from hours to minutes, achieving 3× productivity boost. Developed Django-based backend features and REST APIs while ensuring 99.99% uptime. Serve as Technical POC for multiple clients with 24/7 support, successfully deploying in regulatory-compliant regions like Vietnam and Dubai. Established comprehensive monitoring using Datadog and Grafana, reducing MTTR by 60%.',
+      highlights: [
+        'Built automated deployment tools reducing TAT from hours to minutes',
+        'Managed healthcare AI infrastructure across AWS cloud and on-premise',
+        'Integrated with hospital PACS using DICOM protocol',
+        'Technical POC providing 24/7 client support'
+      ]
     },
     {
       title: 'Management Trainee',
       company: 'Rashtriya Chemical and Fertilizers (PSU)',
       duration: 'Jun 2024 - Oct 2024',
-      role: '.Net Developer and DevOps Engineer',
-      description: 'Worked on .Net development and implementing DevOps practices in a government public sector undertaking.'
+      role: '.NET Developer & DevOps Engineer',
+      description: 'Developed .NET applications and implemented DevOps practices in a government public sector undertaking. Worked on modernizing legacy systems and introducing automation practices.',
+      highlights: [
+        'Developed backend features using .NET framework',
+        'Introduced DevOps practices to traditional workflows',
+        'Collaborated with government stakeholders'
+      ]
     },
     {
       title: 'Systems Engineer',
       company: 'Tata Consultancy Services',
       duration: 'Aug 2021 - Jun 2024',
-      role: 'DevOps Engineer',
-      description: 'Designed and implemented automated deployment pipelines and configuration management systems. Collaborated with development teams to implement agile methodology and performance tuning procedures, resulting in a 30% reduction in security incidents and a 25% improvement in system performance.'
+      role: 'Developer & DevOps Engineer',
+      description: 'Worked on Intel projects including IFF Digital Twin and Intelligent Traffic Management. Created REST APIs using context broker framework and managed Kubernetes deployments. Implemented MQTT and Kafka for real-time data streaming. Used Snyk for vulnerability scanning, addressing critical issues including Log4j. Achieved 99% platform uptime and reduced deployment effort by 30% using Helm automation.',
+      highlights: [
+        'Developed APIs for Digital Twin platform using REST framework',
+        'Managed POD deployments in Kubernetes clusters',
+        'Implemented real-time messaging with MQTT and Kafka',
+        'Improved security posture through automated vulnerability scanning'
+      ]
     }
   ];
 
-  const projects = [
-    {
-      title: 'IFF Digital Twin',
-      client: 'Intel',
-      organization: 'TCS',
-      tools: ['Kubernetes', 'Docker', 'Helm', 'Jenkins', 'Git', 'AWS', 'Sonarqube', 'Linux', 'Docker', 'Postman'],
-      responsibilities: [
-        'Built continuous integration & continuous deployment pipeline using Jenkins',
-        'Wrote Docker files for docker images to be used for application deployment',
-        'Managed source code repository using GIT',
-        'Deployments using Docker repo',
-        'POD Management in Kubernetes Cluster',
-        'Integrated Code quality tools like Sonarqube',
-        'Integrated security analysis tools like OWASP Dependency check',
-        'Prepared high level documentation explaining Installation & Configuration',
-        'Created Gitlab webhooks for automating Jenkins jobs',
-        'Used JIRA tool for ticket tracking'
-      ]
-    },
-    {
-      title: 'Intelligent Traffic Management',
-      client: 'Intel',
-      organization: 'TCS',
-      tools: ['Kubernetes', 'Docker', 'Helm', 'Jenkins', 'Git', 'AWS', 'Sonarqube', 'Linux', 'Docker', 'Postman', 'Terraform'],
-      responsibilities: [
-        'Used maven for building the projects',
-        'Integration of tools like Sonarqube, Owasp Dependency Check',
-        'Added Linux VM as an agent for running pipelines',
-        'Provisioned AWS VMs Using Terraform',
-        'Built continuous integration & continuous deployment pipeline using Jenkins',
-        'Wrote Docker files for docker images to be used for application deployment',
-        'Managed source code repository using GIT',
-        'Deployments using Docker repo',
-        'POD Management in Kubernetes Cluster',
-        'Integrated security analysis tools like OWASP Dependency check',
-        'Prepared high level documentation explaining Installation & Configuration',
-        'Created Gitlab webhooks for automating Jenkins jobs'
-      ]
-    }
-  ];
 
   const education = [
     {
@@ -102,7 +80,7 @@ const Resume = () => {
       description: 'Received for doing multiple POCs and getting good feedback, appreciation from engagements'
     },
     {
-      title: 'Hero Of The Cluster',
+      title: 'Star Team Award',
       description: 'Received for good work performance in the project'
     }
   ];
@@ -133,7 +111,7 @@ const Resume = () => {
           </h3>
           
           <div className="space-y-8">
-            {experiences.map((exp, index) => (
+            {(showAllExperience ? experiences : experiences.slice(0, 1)).map((exp, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -156,63 +134,41 @@ const Resume = () => {
                     <span className="mx-2">•</span>
                     <span className="font-medium text-blue-600 dark:text-blue-400">{exp.role}</span>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-300">{exp.description}</p>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">{exp.description}</p>
+                  {exp.highlights && (
+                    <ul className="list-disc list-inside space-y-1 text-gray-600 dark:text-gray-400 text-sm">
+                      {exp.highlights.map((highlight, idx) => (
+                        <li key={idx}>{highlight}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </motion.div>
             ))}
           </div>
-        </div>
-
-        {/* Projects */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8 flex items-center">
-            <CommandLineIcon className="w-6 h-6 mr-2 text-blue-600 dark:text-blue-400" />
-            Key Projects
-          </h3>
-
-          <div className="space-y-10">
-            {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md"
+          
+          {experiences.length > 1 && (
+            <div className="mt-6 text-center">
+              <button
+                onClick={() => setShowAllExperience(!showAllExperience)}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
               >
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                  <h4 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 md:mb-0">{project.title}</h4>
-                  <div className="mt-1 md:mt-0 flex flex-wrap items-center text-gray-600 dark:text-gray-400">
-                    <BuildingOfficeIcon className="w-4 h-4 mr-2" />
-                    <span>{project.organization}</span>
-                    <span className="mx-2">•</span>
-                    <span>Client: {project.client}</span>
-                  </div>
-                </div>
-
-                <div className="mb-6 flex flex-wrap gap-2">
-                  {project.tools.map((tool, toolIndex) => (
-                    <span
-                      key={toolIndex}
-                      className="px-3 py-1 bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-full text-sm"
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-
-                <div>
-                  <h5 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Responsibilities:</h5>
-                  <ul className="list-disc pl-5 space-y-1 text-gray-600 dark:text-gray-300">
-                    {project.responsibilities.map((resp, respIndex) => (
-                      <li key={respIndex}>{resp}</li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                {showAllExperience ? (
+                  <>
+                    Show Less
+                    <ChevronUpIcon className="w-5 h-5" />
+                  </>
+                ) : (
+                  <>
+                    Show More Experience
+                    <ChevronDownIcon className="w-5 h-5" />
+                  </>
+                )}
+              </button>
+            </div>
+          )}
         </div>
+
 
         {/* Education */}
         <div className="mb-16">

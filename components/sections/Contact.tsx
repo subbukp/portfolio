@@ -2,6 +2,8 @@
 
 import React, { useState, FormEvent } from 'react';
 import Button from '../shared/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -42,9 +44,9 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    { name: 'GitHub', url: 'https://github.com/subbukp', icon: '📦' },
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/subrahmanya-k-p-964733184/', icon: '💼' },
-    { name: 'Twitter', url: 'https://x.com/subrahmanya11', icon: '🐦' },
+    { name: 'GitHub', url: 'https://github.com/subbukp', icon: faGithub, color: 'hover:text-gray-900 dark:hover:text-white' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/subrahmanya-k-p-964733184/', icon: faLinkedin, color: 'hover:text-blue-600 dark:hover:text-blue-400' },
+    { name: 'Twitter', url: 'https://x.com/subrahmanya11', icon: faTwitter, color: 'hover:text-sky-500 dark:hover:text-sky-400' },
   ];
 
   return (
@@ -164,10 +166,10 @@ const Contact = () => {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-2xl hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-2"
+                    className={`text-gray-600 dark:text-gray-400 transition-colors ${link.color}`}
                     aria-label={link.name}
                   >
-                    {link.icon}
+                    <FontAwesomeIcon icon={link.icon} className="w-8 h-8" />
                   </a>
                 ))}
               </div>
