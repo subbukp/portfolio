@@ -187,9 +187,9 @@ const projects: Project[] = [
 export default function Projects() {
   const [showAllProjects, setShowAllProjects] = useState(false);
   
-  console.log('Total projects:', projects.length);
-  console.log('Show all projects:', showAllProjects);
-  console.log('Projects to show:', showAllProjects ? projects.length : 4);
+  // Debug: List all project names
+  console.log('All projects:', projects.map(p => p.name));
+  console.log('Total count:', projects.length);
   
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -237,7 +237,7 @@ export default function Projects() {
           <div className="grid gap-8 md:grid-cols-2">
             {(showAllProjects ? projects : projects.slice(0, 4)).map((project, idx) => (
               <motion.div
-                key={idx}
+                key={project.name}
                 variants={itemVariants}
                 className="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
               >
