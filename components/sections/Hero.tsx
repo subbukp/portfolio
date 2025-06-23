@@ -109,7 +109,7 @@ export default function Hero() {
             variants={itemVariants}
             className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-lg"
           >
-            Designing reliable infrastructure, automating operations, and ensuring system resilience with a focus on observability and performance at Qure.ai.
+            Bridging development and operations with a focus on building robust systems, automating workflows, and ensuring reliability at scale.
           </motion.p>
 
           <motion.div

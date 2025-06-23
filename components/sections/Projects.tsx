@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 // Font Awesome imports
@@ -185,6 +185,8 @@ const projects: Project[] = [
 ];
 
 export default function Projects() {
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -226,7 +228,7 @@ export default function Projects() {
 
           {/* Projects Grid */}
           <div className="grid gap-8 md:grid-cols-2">
-            {projects.map((project, idx) => (
+            {(showAllProjects ? projects : projects.slice(0, 4)).map((project, idx) => (
               <motion.div
                 key={idx}
                 variants={itemVariants}
@@ -351,6 +353,20 @@ export default function Projects() {
               </motion.div>
             ))}
           </div>
+          
+          {projects.length > 4 && (
+            <motion.div variants={itemVariants} className="text-center">
+              <button
+                onClick={() => setShowAllProjects(!showAllProjects)}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+              >
+                {showAllProjects ? 'Show Less' : 'Show More Projects'}
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={showAllProjects ? "M5 15l7-7 7 7" : "M19 9l-7 7-7-7"} />
+                </svg>
+              </button>
+            </motion.div>
+          )}
 
           {/* Additional Contributions Section */}
           <motion.div 

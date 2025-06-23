@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   BriefcaseIcon, 
@@ -10,8 +10,10 @@ import {
   ArrowDownTrayIcon
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 
 const Resume = () => {
+  const [showAllExperience, setShowAllExperience] = useState(false);
   const experiences = [
     {
       title: 'Site Reliability Engineer',
@@ -109,7 +111,7 @@ const Resume = () => {
           </h3>
           
           <div className="space-y-8">
-            {experiences.map((exp, index) => (
+            {(showAllExperience ? experiences : experiences.slice(0, 2)).map((exp, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -144,6 +146,27 @@ const Resume = () => {
               </motion.div>
             ))}
           </div>
+          
+          {experiences.length > 2 && (
+            <div className="mt-6 text-center">
+              <button
+                onClick={() => setShowAllExperience(!showAllExperience)}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+              >
+                {showAllExperience ? (
+                  <>
+                    Show Less
+                    <ChevronUpIcon className="w-5 h-5" />
+                  </>
+                ) : (
+                  <>
+                    Show More Experience
+                    <ChevronDownIcon className="w-5 h-5" />
+                  </>
+                )}
+              </button>
+            </div>
+          )}
         </div>
 
 

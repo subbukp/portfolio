@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { CodeBracketIcon, ShieldCheckIcon, ChartBarIcon, CommandLineIcon, CloudArrowUpIcon, LockClosedIcon } from '@heroicons/react/24/outline';
+import { CodeBracketIcon, ShieldCheckIcon, ChartBarIcon, CommandLineIcon, CloudArrowUpIcon, LockClosedIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
 const principles = [
@@ -62,6 +62,8 @@ const socialLinks = [
 ];
 
 const About = () => {
+  const [showFullBio, setShowFullBio] = useState(false);
+  
   return (
     <section id="about" className="py-20 bg-white dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -83,18 +85,38 @@ const About = () => {
               A versatile technology professional with 3+ years of experience bridging development and operations. I combine strong backend 
               development skills in Django, Python, and .NET with deep expertise in DevOps practices, infrastructure automation, and site reliability engineering.
             </p>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
-              Currently working as a Site Reliability Engineer at Qure.ai, where I wear multiple hats - developing backend features, building 
-              automation tools, and ensuring infrastructure reliability. I've successfully developed Django-based applications, REST APIs, and 
-              deployment automation tools while managing critical healthcare products like AutoRECIST, qXR, qCT, and Gateway across diverse 
-              cloud and on-premise environments.
-            </p>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
-              My unique blend of development and SRE expertise has resulted in building automated installers that reduced deployment time from 
-              hours to minutes, creating internal tools that boosted productivity by 3×, and maintaining 99.99% uptime for critical systems. 
-              I thrive at the intersection of code and infrastructure, whether it's developing Django applications, automating with Python, 
-              or architecting scalable cloud solutions.
-            </p>
+            {showFullBio && (
+              <>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  Currently working as a Site Reliability Engineer at Qure.ai, where I wear multiple hats - developing backend features, building 
+                  automation tools, and ensuring infrastructure reliability. I've successfully developed Django-based applications, REST APIs, and 
+                  deployment automation tools while managing critical healthcare products like AutoRECIST, qXR, qCT, and Gateway across diverse 
+                  cloud and on-premise environments.
+                </p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  My unique blend of development and SRE expertise has resulted in building automated installers that reduced deployment time from 
+                  hours to minutes, creating internal tools that boosted productivity by 3×, and maintaining 99.99% uptime for critical systems. 
+                  I thrive at the intersection of code and infrastructure, whether it's developing Django applications, automating with Python, 
+                  or architecting scalable cloud solutions.
+                </p>
+              </>
+            )}
+            <button
+              onClick={() => setShowFullBio(!showFullBio)}
+              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium mb-4"
+            >
+              {showFullBio ? (
+                <>
+                  Show Less
+                  <ChevronUpIcon className="w-4 h-4" />
+                </>
+              ) : (
+                <>
+                  Read More
+                  <ChevronDownIcon className="w-4 h-4" />
+                </>
+              )}
+            </button>
             <div className="flex flex-wrap gap-3 mt-6">
               <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium mb-2">
                 Django & Python

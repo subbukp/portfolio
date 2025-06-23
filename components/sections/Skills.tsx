@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   ServerIcon,
@@ -12,10 +12,15 @@ import {
   CircleStackIcon,
   DocumentTextIcon,
   CodeBracketIcon,
-  WrenchScrewdriverIcon
+  WrenchScrewdriverIcon,
+  ChevronDownIcon,
+  ChevronUpIcon
 } from '@heroicons/react/24/outline';
 
 const Skills = () => {
+  const [showAllSkills, setShowAllSkills] = useState(false);
+  const [showCertifications, setShowCertifications] = useState(false);
+  
   const skillCategories = [
     {
       name: 'Languages & Frameworks',
@@ -117,7 +122,7 @@ const Skills = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, categoryIndex) => (
+          {(showAllSkills ? skillCategories : skillCategories.slice(0, 6)).map((category, categoryIndex) => (
             <motion.div
               key={category.name}
               initial={{ opacity: 0, y: 20 }}
@@ -147,6 +152,27 @@ const Skills = () => {
           ))}
         </div>
 
+        {skillCategories.length > 6 && (
+          <div className="mt-8 text-center">
+            <button
+              onClick={() => setShowAllSkills(!showAllSkills)}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+            >
+              {showAllSkills ? (
+                <>
+                  Show Less
+                  <ChevronUpIcon className="w-5 h-5" />
+                </>
+              ) : (
+                <>
+                  Show More Skills
+                  <ChevronDownIcon className="w-5 h-5" />
+                </>
+              )}
+            </button>
+          </div>
+        )}
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -154,8 +180,22 @@ const Skills = () => {
           viewport={{ once: true }}
           className="mt-8 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
         >
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 text-center">Certifications & Achievements</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Certifications & Achievements</h3>
+            <button
+              onClick={() => setShowCertifications(!showCertifications)}
+              className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+            >
+              {showCertifications ? (
+                <ChevronUpIcon className="w-6 h-6" />
+              ) : (
+                <ChevronDownIcon className="w-6 h-6" />
+              )}
+            </button>
+          </div>
+          
+          {showCertifications && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex items-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 transition-colors">
               <DocumentTextIcon className="w-10 h-10 text-blue-600 dark:text-blue-400 mr-4 flex-shrink-0" />
               <div>
@@ -192,6 +232,7 @@ const Skills = () => {
               </span>
             </div>
           </div>
+          )}
         </motion.div>
       </div>
     </section>
