@@ -147,7 +147,7 @@ const Resume = () => {
             ))}
           </div>
           
-          {experiences.length > 2 && (
+          {experiences.length > 1 && (
             <div className="mt-6 text-center">
               <button
                 onClick={() => setShowAllExperience(!showAllExperience)}

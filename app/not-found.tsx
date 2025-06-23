@@ -106,7 +106,7 @@ const NotFound = () => {
           } else if (args[1] === '/blog') {
             window.location.href = '/blog';
           } else if (args[1] === '/projects') {
-            window.location.href = '/projects';
+            window.location.href = '/#projects';
           } else {
             newHistory.push(`bash: cd: ${args[1] || 'missing argument'}: No such file or directory`);
           }
@@ -138,7 +138,7 @@ const NotFound = () => {
             'INITIALIZING HACK MODE...',
             '[████████████████████████] 100%',
             'ACCESS GRANTED',
-            'Just kidding! But you can explore the real projects at /projects'
+            'Just kidding! But you can explore the real projects at /#projects'
           );
           setTimeout(() => setHackerMode(false), 3000);
           break;
@@ -333,7 +333,7 @@ const NotFound = () => {
             <Link href="/" className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors">
               🏠 Go Home
             </Link>
-            <Link href="/projects" className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded transition-colors">
+            <Link href="/#projects" className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded transition-colors">
               🚀 View Projects
             </Link>
             <button 
