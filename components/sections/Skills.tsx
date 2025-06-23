@@ -195,7 +195,8 @@ const Skills = () => {
           </div>
           
           {showCertifications && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex items-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 transition-colors">
               <DocumentTextIcon className="w-10 h-10 text-blue-600 dark:text-blue-400 mr-4 flex-shrink-0" />
               <div>
@@ -232,6 +233,7 @@ const Skills = () => {
               </span>
             </div>
           </div>
+            </>
           )}
         </motion.div>
       </div>
