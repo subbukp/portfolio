@@ -6,7 +6,6 @@ import {
   BriefcaseIcon, 
   AcademicCapIcon, 
   BuildingOfficeIcon,
-  CommandLineIcon,
   ServerIcon,
   ArrowDownTrayIcon
 } from '@heroicons/react/24/outline';
@@ -37,46 +36,6 @@ const Resume = () => {
     }
   ];
 
-  const projects = [
-    {
-      title: 'IFF Digital Twin',
-      client: 'Intel',
-      organization: 'TCS',
-      tools: ['Kubernetes', 'Docker', 'Helm', 'Jenkins', 'Git', 'AWS', 'Sonarqube', 'Linux', 'Docker', 'Postman'],
-      responsibilities: [
-        'Built continuous integration & continuous deployment pipeline using Jenkins',
-        'Wrote Docker files for docker images to be used for application deployment',
-        'Managed source code repository using GIT',
-        'Deployments using Docker repo',
-        'POD Management in Kubernetes Cluster',
-        'Integrated Code quality tools like Sonarqube',
-        'Integrated security analysis tools like OWASP Dependency check',
-        'Prepared high level documentation explaining Installation & Configuration',
-        'Created Gitlab webhooks for automating Jenkins jobs',
-        'Used JIRA tool for ticket tracking'
-      ]
-    },
-    {
-      title: 'Intelligent Traffic Management',
-      client: 'Intel',
-      organization: 'TCS',
-      tools: ['Kubernetes', 'Docker', 'Helm', 'Jenkins', 'Git', 'AWS', 'Sonarqube', 'Linux', 'Docker', 'Postman', 'Terraform'],
-      responsibilities: [
-        'Used maven for building the projects',
-        'Integration of tools like Sonarqube, Owasp Dependency Check',
-        'Added Linux VM as an agent for running pipelines',
-        'Provisioned AWS VMs Using Terraform',
-        'Built continuous integration & continuous deployment pipeline using Jenkins',
-        'Wrote Docker files for docker images to be used for application deployment',
-        'Managed source code repository using GIT',
-        'Deployments using Docker repo',
-        'POD Management in Kubernetes Cluster',
-        'Integrated security analysis tools like OWASP Dependency check',
-        'Prepared high level documentation explaining Installation & Configuration',
-        'Created Gitlab webhooks for automating Jenkins jobs'
-      ]
-    }
-  ];
 
   const education = [
     {
@@ -163,56 +122,6 @@ const Resume = () => {
           </div>
         </div>
 
-        {/* Projects */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8 flex items-center">
-            <CommandLineIcon className="w-6 h-6 mr-2 text-blue-600 dark:text-blue-400" />
-            Key Projects
-          </h3>
-
-          <div className="space-y-10">
-            {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md"
-              >
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                  <h4 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 md:mb-0">{project.title}</h4>
-                  <div className="mt-1 md:mt-0 flex flex-wrap items-center text-gray-600 dark:text-gray-400">
-                    <BuildingOfficeIcon className="w-4 h-4 mr-2" />
-                    <span>{project.organization}</span>
-                    <span className="mx-2">•</span>
-                    <span>Client: {project.client}</span>
-                  </div>
-                </div>
-
-                <div className="mb-6 flex flex-wrap gap-2">
-                  {project.tools.map((tool, toolIndex) => (
-                    <span
-                      key={toolIndex}
-                      className="px-3 py-1 bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-full text-sm"
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-
-                <div>
-                  <h5 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">Responsibilities:</h5>
-                  <ul className="list-disc pl-5 space-y-1 text-gray-600 dark:text-gray-300">
-                    {project.responsibilities.map((resp, respIndex) => (
-                      <li key={respIndex}>{resp}</li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
 
         {/* Education */}
         <div className="mb-16">

@@ -117,41 +117,50 @@ const projects: Project[] = [
     ]
   },
   {
-    icon: ChartBarIcon,
-    name: "Cloud-Native Observability Platform",
-    stack: ["AWS", "Prometheus", "Grafana", "OpenTelemetry", "Terraform", "Datadog"],
-    problem: "Lacked comprehensive monitoring and alerting for microservices architecture across multiple healthcare products.",
+    icon: CommandLineIcon,
+    name: "IFF Digital Twin",
+    company: "TCS (Client: Intel)",
+    stack: ["Kubernetes", "Docker", "Helm", "Jenkins", "Git", "AWS", "SonarQube", "Linux", "Postman", "GitLab", "JIRA"],
+    problem: "Need to create a scalable, maintainable digital twin platform for Intel with automated CI/CD pipeline, security scanning, and code quality checks.",
     actions: [
-      "Built centralized monitoring with Prometheus and Grafana",
-      "Standardized organization-wide monitoring with Datadog integration",
-      "Implemented distributed tracing with OpenTelemetry",
-      "Created custom dashboards and alert rules for healthcare-specific metrics",
-      "Automated metric collection and retention policies"
+      "Built continuous integration & continuous deployment pipeline using Jenkins",
+      "Wrote Docker files for application deployment",
+      "Managed source code repository using Git",
+      "Implemented POD management in Kubernetes Cluster",
+      "Integrated code quality tools like SonarQube",
+      "Integrated security analysis tools like OWASP Dependency check",
+      "Prepared high level documentation explaining Installation & Configuration",
+      "Created GitLab webhooks for automating Jenkins jobs",
+      "Used JIRA tool for ticket tracking"
     ],
     outcomes: [
-      "MTTR reduced from 45min to 10min",
-      "Alert noise reduced by 60%",
-      "99.99% monitoring system uptime",
-      "Unified observability across all products"
+      "Reduced deployment time by 65% through CI/CD automation",
+      "Improved code quality scores by 30% with SonarQube integration",
+      "Enhanced security compliance through automated OWASP scanning",
+      "Zero production incidents due to automated testing pipeline"
     ]
   },
   {
     icon: RocketLaunchIcon,
-    name: "Infrastructure Automation & Compliance",
-    stack: ["Terraform", "AWS", "Azure", "Docker", "Kubernetes", "Python", "Bash"],
-    problem: "Manual infrastructure changes and deployment processes were causing delays and compliance issues in regulated healthcare environments.",
+    name: "Intelligent Traffic Management",
+    company: "TCS (Client: Intel)",
+    stack: ["Kubernetes", "Docker", "Terraform", "AWS", "Jenkins", "Maven", "SonarQube", "OWASP", "GitLab"],
+    problem: "Needed to provision and deploy a traffic management system with infrastructure as code principles, automated security scanning, and scalable architecture.",
     actions: [
-      "Led infrastructure setup in regulatory-sensitive regions (Vietnam, Dubai)",
-      "Developed reusable Terraform modules for healthcare-compliant infrastructure",
-      "Created automated deployment pipelines adhering to regional regulations",
-      "Implemented security best practices for HIPAA compliance",
-      "Used remote management tools (Teleport, Endpoint Central) for secure access"
+      "Used Maven for building the projects",
+      "Integrated tools like SonarQube and OWASP Dependency Check",
+      "Added Linux VM as an agent for running pipelines",
+      "Provisioned AWS VMs using Terraform",
+      "Built CI/CD pipeline using Jenkins",
+      "Implemented GitLab webhooks for automating Jenkins jobs",
+      "Managed POD deployment in Kubernetes Cluster",
+      "Created comprehensive documentation for installation and configuration"
     ],
     outcomes: [
-      "100% compliance with regional healthcare regulations",
-      "Infrastructure deployment time reduced by 80%",
-      "Zero security incidents in regulated environments",
-      "Standardized deployment across 10+ client sites"
+      "Infrastructure provisioning time reduced by 80% with Terraform",
+      "Zero security vulnerabilities in production through OWASP integration",
+      "Improved development team productivity by 40% with automated workflows",
+      "Successfully scaled to handle 10x traffic increase"
     ]
   }
 ];
