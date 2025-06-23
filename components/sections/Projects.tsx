@@ -175,10 +175,12 @@ const projects: Project[] = [
       // "Provisioned AWS VMs using Terraform",
       // "Built CI/CD pipeline using Jenkins",
       // "Implemented GitLab webhooks for automating Jenkins jobs",
-      "Managed POD deployment in Kubernetes Cluster",
+      "Managed POD deployment in Kubernetes Cluster"
       //"Created comprehensive documentation for installation and configuration"
     ],
-    //outcomes: [
+    outcomes: [
+      "Successfully deployed traffic management system in production",
+      "Achieved scalable architecture using Kubernetes orchestration"
       //"Infrastructure provisioning time reduced by 80% with Terraform",
       //"Zero security vulnerabilities in production through OWASP integration",
       //"Improved development team productivity by 40% with automated workflows",
