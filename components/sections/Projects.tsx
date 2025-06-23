@@ -11,12 +11,7 @@ import {
   faBrain,
   faNetworkWired,
   faDigitalTachograph,
-  faTrafficLight,
-  faHospital,
-  faMicrochip,
-  faServer,
-  faCloud,
-  faDatabase
+  faTrafficLight
 } from '@fortawesome/free-solid-svg-icons';
 
 interface ProjectLink {
