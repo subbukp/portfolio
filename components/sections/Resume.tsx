@@ -111,7 +111,7 @@ const Resume = () => {
           </h3>
           
           <div className="space-y-8">
-            {(showAllExperience ? experiences : experiences.slice(0, 2)).map((exp, index) => (
+            {(showAllExperience ? experiences : experiences.slice(0, 1)).map((exp, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
