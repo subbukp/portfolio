@@ -187,6 +187,10 @@ const projects: Project[] = [
 export default function Projects() {
   const [showAllProjects, setShowAllProjects] = useState(false);
   
+  // Debug: List all project names
+  console.log('All projects:', projects.map(p => p.name));
+  console.log('Total count:', projects.length);
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -224,13 +228,16 @@ export default function Projects() {
             <p className="mt-6 text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
               Key projects and initiatives from my work at Qure.ai and other organizations, showcasing impact on healthcare AI and infrastructure automation.
             </p>
+            <p className="mt-2 text-sm text-gray-500 dark:text-gray-500">
+              Showing {showAllProjects ? projects.length : Math.min(4, projects.length)} of {projects.length} projects
+            </p>
           </motion.div>
 
           {/* Projects Grid */}
           <div className="grid gap-8 md:grid-cols-2">
             {(showAllProjects ? projects : projects.slice(0, 4)).map((project, idx) => (
               <motion.div
-                key={idx}
+                key={project.name}
                 variants={itemVariants}
                 className="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
               >

@@ -47,11 +47,27 @@ export async function POST(request: NextRequest) {
       city: location?.city,
     });
     
-    return NextResponse.json({ success: true });
-  } catch (error) {
+    return NextResponse.json({ 
+      success: true,
+      storage: process.env.VERCEL ? 'in-memory' : 'file',
+      message: process.env.VERCEL 
+        ? 'Visit logged to in-memory storage (will reset on cold start)' 
+        : 'Visit logged to file'
+    });
+  } catch (error: any) {
     console.error('Error logging visit:', error);
+    
+    // More detailed error response for debugging
+    const errorMessage = process.env.NODE_ENV === 'development' 
+      ? `Failed to log visit: ${error.message}`
+      : 'Failed to log visit';
+    
     return NextResponse.json(
-      { error: 'Failed to log visit' },
+      { 
+        error: errorMessage,
+        isVercel: !!process.env.VERCEL,
+        message: 'Note: File-based logging does not work on Vercel. Using in-memory storage.'
+      },
       { status: 500 }
     );
   }
